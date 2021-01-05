@@ -1,5 +1,5 @@
 # aqua_asp
-ASP 언어로 MVC 패턴을 구현한 Framework
+ASP 언어로 VC 패턴을 구현한 Framework
 
 # IIS 모듈
  - IIS rewrite 모듈 설치
