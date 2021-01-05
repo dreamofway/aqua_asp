@@ -13,8 +13,7 @@ Function getCategory()
 	Set db_obj = db_conn.connection("kids")
 
 	query = "	SELECT * " &_
-			"			, (SELECT TOP 1 CatrCode FROM ArticleCategory WHERE CatrCode LIKE '%'+ std.CatrCode +'%' AND CatrLevel = 2 ) AS first_child_code " &_
-			"	FROM ArticleCategory AS std " &_
+			"	FROM ArticleCategory " &_
 			"	WHERE ( IsPublish = 1 )  " &_
 			"	ORDER BY CatrOrder ASC, catrnum  ASC, CatrLevel ASC  "
 	
@@ -35,7 +34,6 @@ Function getCategory()
 
 				Set row_data = Server.CreateObject("Scripting.Dictionary")
 				Call row_data.add( "CatrName" , Cstr( rs("CatrName") ) ) 
-
 				Call row_data.add( "child_info" , array() ) 
 
 
@@ -125,7 +123,6 @@ Sub initCategory()
 
 			If categroy_key( categroy_loop ) = current_top_catr Then 
 				Call categroy_item( categroy_loop ).add("selected", "on" )
-				
 			Else 
 				Call categroy_item( categroy_loop ).add("selected", "off" )
 			End If 
@@ -140,13 +137,11 @@ Sub initCategory()
 
 				If Len( get_cate_param ) = 2 Then 
 					If child_loop = 0 Then 
-						
 						Call categroy_item( categroy_loop ).item("child_info")( child_loop ).add("selected", "on" )
 						Call sub_menu_title.add( categroy_key( categroy_loop ), categroy_item( categroy_loop ).item("child_info")( child_loop ).item("CatrName") )						
 					End If 
 				Else 
 					If CStr( get_cate_param ) = categroy_item( categroy_loop ).item("child_info")( child_loop ).item("CatrCode") Then 
-						
 						Call categroy_item( categroy_loop ).item("child_info")( child_loop ).add("selected", "on" )
 						Call sub_menu_title.add( categroy_key( categroy_loop ), categroy_item( categroy_loop ).item("child_info")( child_loop ).item("CatrName") )
 					Else 
@@ -192,7 +187,6 @@ Sub initCategory()
 	End If 
 	
 	
-'	echoBr( wm.getVal( "top_menu_title" ) )
 '	echoBr( wm.getVal( "sub_menu_title" ) )
 '	echoBr( sub_menu.item( current_top_catr ) )
 '	echoBr( obj_category )
@@ -310,9 +304,7 @@ Function getNewsPage( _
 
 	Select Case order_type
 		Case "lately" : query_orderby = " t_std.RegDate DESC "
-		Case "popular" 
-			query_orderby = " t_std.ViewCnt DESC "
-			add_query = add_query & " AND ( t_std.RegDate >= '"& Left( dateAdd("w", -30, now() ), 10 ) & " 00:00:00" &"'  ) "
+		Case "popular" : query_orderby = " t_std.ViewCnt DESC "
 		Case "notWriterOnline" 
 			query_orderby = " t_std.RegDate DESC "
 			add_query = add_query & " AND ( t_std.WriterName NOT LIKE '%온라인뉴스팀%' ) "
@@ -343,15 +335,6 @@ Function getNewsPage( _
 		
 	End If 
 
-	If headline_deduplication = True Then 
-
-		add_query = add_query & " AND ( "&_
-								"			t_std.ArticleID NOT IN ( " &_
-								"				SELECT ArticleID FROM MainHeadLine WHERE IsPublish = 1 AND ArticleID IS NOT NULL " &_
-								"			)"&_
-								" ) "
-	End If 
-
 	query_select = " t_std.* " & _
 				", IsNULL( (" & _
 				"		SELECT TOP 1" & _
@@ -364,7 +347,70 @@ Function getNewsPage( _
 				"		SELECT TOP 1" & _
 				"			 ImagePath + '/' + ImageName  " & _
 				"		FROM ActicleImage " & _
-				"		WHERE ArticleID = t_std.ArticleID AND align='img_info_main' " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='310' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_310 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='220' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_220 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='195' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_195 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='180' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_180 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='150' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_150 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='140' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_140 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='120' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_120 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='97' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_97 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='50' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_50 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='main' " & _
 				"		ORDER BY SEQ DESC " & _
 				"	) , '' ) AS img_info_main " & _
 				", ( " & _
@@ -380,7 +426,6 @@ Function getNewsPage( _
 					" ON t_std.ArticleID = t_img.ArticleID " & _
 					" AND t_img.align='news_list_thum' "
 	query_where =	" ( t_std.IsPublish = 1 ) AND ( t_std.ArticleID IS NOT NULL ) AND ( t_std.ArticleClass NOT IN (10) )  " & add_query
-	
 
 	'--------------------------------------------------------------------
 	' 페이징 초기화
@@ -423,6 +468,59 @@ Function getNewsPage( _
 				
 				img_info = wm.image_domain & rs("img_path")
 
+				If rs("thum_img_path_310") = "" Then	
+					thum_img_path_310 = ""
+				Else 
+					thum_img_path_310 = wm.image_domain & rs("thum_img_path_310")
+				End If 
+
+				If rs("thum_img_path_220") = "" Then	
+					thum_img_path_220 = ""
+				Else 
+					thum_img_path_220 = wm.image_domain & rs("thum_img_path_220")
+				End If 
+
+				If rs("thum_img_path_195") = "" Then	
+					thum_img_path_195 = ""
+				Else 
+					thum_img_path_195 = wm.image_domain & rs("thum_img_path_195")
+				End If 
+				
+				If rs("thum_img_path_180") = "" Then	
+					thum_img_path_180 = ""
+				Else 
+					thum_img_path_180 = wm.image_domain & rs("thum_img_path_180")
+				End If 
+
+				If rs("thum_img_path_150") = "" Then	
+					thum_img_path_150 = ""
+				Else 
+					thum_img_path_150 = wm.image_domain & rs("thum_img_path_150")
+				End If 
+
+				If rs("thum_img_path_140") = "" Then	
+					thum_img_path_140 = ""
+				Else 
+					thum_img_path_140 = wm.image_domain & rs("thum_img_path_140")
+				End If 
+
+				If rs("thum_img_path_120") = "" Then	
+					thum_img_path_120 = ""
+				Else 
+					thum_img_path_120 = wm.image_domain & rs("thum_img_path_120")
+				End If 
+
+				If rs("thum_img_path_97") = "" Then	
+					thum_img_path_97 = ""
+				Else 
+					thum_img_path_97 = wm.image_domain & rs("thum_img_path_97")
+				End If 
+
+				If rs("thum_img_path_50") = "" Then	
+					thum_img_path_50 = ""
+				Else 
+					thum_img_path_50 = wm.image_domain & rs("thum_img_path_50")
+				End If 
 
 				If rs("img_info_main") = "" Then	
 					img_info_main = ""
@@ -531,23 +629,84 @@ Function getMainNews( ByVal param_pcode )
 				"		WHERE ArticleID = t_std.ArticleID AND align='news_list_thum' " & _
 				"		ORDER BY SEQ DESC " & _
 				"	) , '' ) AS img_path " & _
-				
 				"	,IsNULL( (" & _
 				"		SELECT TOP 1" & _
 				"			 ImagePath + '/' + ImageName  " & _
 				"		FROM ActicleImage " & _
-				"		WHERE ArticleID = t_std.ArticleID AND align='img_info_main' " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='310' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_310 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='220' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_220 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='195' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_195 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='180' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_180 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='150' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_150 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='140' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_140 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='120' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_120 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='97' " & _
+				"		ORDER BY SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_97 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage AS t_img " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='50' " & _
+				"		ORDER BY t_img.SEQ DESC " & _
+				"	) , '' ) AS thum_img_path_50 " & _
+				"	,IsNULL( (" & _
+				"		SELECT TOP 1" & _
+				"			 ImagePath + '/' + ImageName  " & _
+				"		FROM ActicleImage " & _
+				"		WHERE ArticleID = t_std.ArticleID AND align='main' " & _
 				"		ORDER BY SEQ DESC " & _
 				"	) , '' ) AS img_info_main " & _
 				", ISNULL( t_std.Subject , '') AS main_subject  " &_
 				", ( SELECT COUNT( SEQ ) FROM ArticleData WHERE ArticleID = t_std.ArticleID  ) AS img_cnt   " &_
 				", ( convert(varchar(16), t_news.RegDate, 120) ) AS conv_reg_date " & _			
-				", t_std.Subject AS main_subject " & _			
 				" FROM MainHeadLine AS t_std " & _
 				" INNER JOIN ArticleData AS t_news " & _
 				" ON t_std.ArticleID = t_news.ArticleID " & _
 				" WHERE ( t_std.IsPublish = '1' ) AND ( t_std.CatrLevel = '2' ) " &  add_query_where &_
-				" ORDER BY LEN(t_std.CatrIndex) ASC, t_std.CatrIndex ASC "
+				" ORDER BY t_std.CatrIndex ASC "
 	
 	Set rs = db_obj.Execute( query  )
 
@@ -582,14 +741,62 @@ Function getMainNews( ByVal param_pcode )
 				thum_img_path_97 = ""
 				thum_img_path_50 = ""
 			Else 
-				If rs("img_path") = "" Then 
-					img_info = wm.image_domain & "/ikn/ikn_default_ogp.png"
+				img_info = wm.image_domain & rs("img_path")
+				img_info_main = wm.image_domain & rs("img_info_main")
+
+				If rs("thum_img_path_310") = "" Then	
+					thum_img_path_310 = ""
 				Else 
-					img_info = wm.image_domain & rs("img_path")
+					thum_img_path_310 = wm.image_domain & rs("thum_img_path_310")
+				End If 
+
+				If rs("thum_img_path_220") = "" Then	
+					thum_img_path_220 = ""
+				Else 
+					thum_img_path_220 = wm.image_domain & rs("thum_img_path_220")
+				End If 
+
+				If rs("thum_img_path_195") = "" Then	
+					thum_img_path_195 = ""
+				Else 
+					thum_img_path_195 = wm.image_domain & rs("thum_img_path_195")
 				End If 
 				
+				If rs("thum_img_path_180") = "" Then	
+					thum_img_path_180 = ""
+				Else 
+					thum_img_path_180 = wm.image_domain & rs("thum_img_path_180")
+				End If 
 
-				
+				If rs("thum_img_path_150") = "" Then	
+					thum_img_path_150 = ""
+				Else 
+					thum_img_path_150 = wm.image_domain & rs("thum_img_path_150")
+				End If 
+
+				If rs("thum_img_path_140") = "" Then	
+					thum_img_path_140 = ""
+				Else 
+					thum_img_path_140 = wm.image_domain & rs("thum_img_path_140")
+				End If 
+
+				If rs("thum_img_path_120") = "" Then	
+					thum_img_path_120 = ""
+				Else 
+					thum_img_path_120 = wm.image_domain & rs("thum_img_path_120")
+				End If 
+
+				If rs("thum_img_path_97") = "" Then	
+					thum_img_path_97 = ""
+				Else 
+					thum_img_path_97 = wm.image_domain & rs("thum_img_path_97")
+				End If 
+
+				If rs("thum_img_path_50") = "" Then	
+					thum_img_path_50 = ""
+				Else 
+					thum_img_path_50 = wm.image_domain & rs("thum_img_path_50")
+				End If 
 
 				If rs("img_info_main") = "" Then	
 					img_info_main = img_info
@@ -602,7 +809,7 @@ Function getMainNews( ByVal param_pcode )
 
 			Call result_row( while_loop ).add("ArticleID", Cstr( rs("ArticleID") ) )
 			Call result_row( while_loop ).add("CatrName", Cstr( rs("CatrName") ) )
-			Call result_row( while_loop ).add("Subject", Cstr( subjectReplace( rs("main_subject") ) ) )
+			Call result_row( while_loop ).add("Subject", Cstr( subjectReplace( rs("subject") ) ) )
 			Call result_row( while_loop ).add("main_subject", Cstr( subjectReplace( rs("main_subject") ) ) )
 			Call result_row( while_loop ).add("Contents", Cstr( rs("Contents") ) )
 			Call result_row( while_loop ).add("RegDate", Cstr( rs("RegDate") ) )
@@ -612,15 +819,21 @@ Function getMainNews( ByVal param_pcode )
 			Call result_row( while_loop ).add("CatrCode", Cstr( rs("CatrCode") ) )
 			Call result_row( while_loop ).add("WriterName", Cstr( mixWriteName( getWriterInfo( rs("WriterID"), "AdminDepartment" ), rs("WriterName") ) ) )
 			Call result_row( while_loop ).add("img_path", Cstr( img_info) ) 
-			
+			Call result_row( while_loop ).add("thum_img_path_310", Cstr( thum_img_path_310) ) 
+			Call result_row( while_loop ).add("thum_img_path_220", Cstr( thum_img_path_220) ) 
+			Call result_row( while_loop ).add("thum_img_path_195", Cstr( thum_img_path_195) ) 
+			Call result_row( while_loop ).add("thum_img_path_180", Cstr( thum_img_path_180) ) 
+			Call result_row( while_loop ).add("thum_img_path_150", Cstr( thum_img_path_150) ) 
+			Call result_row( while_loop ).add("thum_img_path_140", Cstr( thum_img_path_140) ) 
+			Call result_row( while_loop ).add("thum_img_path_120", Cstr( thum_img_path_120) ) 
+			Call result_row( while_loop ).add("thum_img_path_97", Cstr( thum_img_path_97) ) 
+			Call result_row( while_loop ).add("thum_img_path_50", Cstr( thum_img_path_50) ) 
 			Call result_row( while_loop ).add("img_info_main", Cstr( img_info_main) ) 
 
 			while_loop = while_loop + 1
 
 			rs.MoveNext()
 		Loop 
-		rs.close
-		Set rs = Nothing 
 	End If 
 	
 	getMainNews = result_row 
@@ -645,7 +858,7 @@ Function makeOneImgeTypeList( ByVal limit, ByVal bundle_cnt,  ByVal list_cnt, By
 	list_arr = getNewsPage( _
 		"main_lately_list" _
 		, "kids" _
-		, true _
+		, false _
 		, true _
 		, "" _
 		, 1 _
@@ -750,7 +963,6 @@ Function makeOneImgeTypeList( ByVal limit, ByVal bundle_cnt,  ByVal list_cnt, By
 			Call result_arr( loop_cnt ).item("img_news").add("CatrCode", img_arr(loop_cnt).item("CatrCode") )
 			Call result_arr( loop_cnt ).item("img_news").add("RegDate", img_arr(loop_cnt).item("RegDate") )
 			
-
 			For text_arr_loop = 0 To (list_cnt - 1)
 
 				ReDim Preserve text_arr_tmp( UBound(text_arr_tmp) + 1 )
@@ -796,8 +1008,6 @@ Function makeOneImgeTypeList( ByVal limit, ByVal bundle_cnt,  ByVal list_cnt, By
 			result_arr( loop_cnt ).Item( "text_news" ) = text_arr_tmp
 			ReDim Preserve text_arr_tmp( 0 )
 
-
-
 		Next 
 
 	End If 
@@ -805,37 +1015,6 @@ Function makeOneImgeTypeList( ByVal limit, ByVal bundle_cnt,  ByVal list_cnt, By
 	makeOneImgeTypeList = result_arr
 
 End Function ' // makeOneImgeTypeList
-
-'***********************************************
-' 날씨정보를 가져온다.
-'***********************************************
-Function getWather()
-
-	Dim db_obj, query, rs
-	
-	Set db_obj = db_conn.connection("health")
-
-	query = " SELECT * FROM ActicleWeather ORDER BY SEQ ASC "
-
-	Set getWather = db_obj.Execute( query  )
-
-End Function 
-
-'***********************************************
-' 주요뉴스 3개를 가져온다.
-'***********************************************
-Function getTopHeadlines()
-
-	Dim db_obj, query, rs
-	
-	Set db_obj = db_conn.connection("kids")
-
-	query = " SELECT Top 3 *, IsNULL( ( SELECT TOP 1 CatrCode FROM ArticleClass WHERE ArticleID = ArticleID AND CatrCode > 0 ORDER BY RegDate ASC ), '' ) AS CatrCode FROM vw_ArticleData_News ORDER BY RegDate DESC "
-
-	Set getTopHeadlines = db_obj.Execute( query  )
-
-End Function 
-
 
 '***********************************************
 ' 기사 작성자 아이디를 기준으로 정보를 세팅한다.
@@ -932,8 +1111,7 @@ Function mixWriteName( ByVal AdminDepartment,  ByVal WriterName )
 	If Trim( AdminDepartment ) = "" Then 
 		result = WriterName
 	Else 
-'		result = Trim( AdminDepartment ) & " " & WriterName & " 기자"
-		result = WriterName & " 기자"
+		result = Trim( AdminDepartment ) & " " & WriterName & " 기자"
 	End If 
 
 	mixWriteName = result
@@ -956,7 +1134,7 @@ Function removeContens( ByVal param_str )
 	content = replace( content , Chr(10), "" )
 	content = replace( content , Chr(13), "" )
 
-	pattern = "<figcaption[^>]*>.*?</figcaption>":'ck editor 캡션내용
+	pattern = "<figcaption[^>]*>.*<\/figcaption>":'ck editor 캡션내용
 	content = eregi_replace(pattern, "", content):
 	pattern = "<(no)?script[^>]*>.*?</(no)?script>":'SCRIPTS
 	content = eregi_replace(pattern, "", content):
@@ -1022,14 +1200,14 @@ Function getChildAreaCode( ByVal param_step, ByVal param_result_type )
 	Select Case param_result_type
 		Case "rs"
 
-			query = "SELECT	* FROM ChildAreaCode WHERE ARStep = '"& param_step &"' ORDER BY ARName ASC "
+			query = "SELECT	* FROM ChildAreaCode WHERE ARStep = '"& param_step &"' ORDER BY ARcode ASC "
 			Set getChildAreaCode = db_obj.Execute( query )
 
 		Case "json"
 			
 			ReDim Preserve city_arr( -1 )
 			
-			query = "SELECT	* FROM ChildAreaCode WHERE DelFlag = 0 AND ARStep = '1' ORDER BY ARName ASC "
+			query = "SELECT	* FROM ChildAreaCode WHERE DelFlag = 0 AND ARStep = '1' ORDER BY ARcode ASC "
 			Set rs = db_obj.Execute( query )
 			
 			Set json_result_arr = jsObject()
@@ -1155,9 +1333,9 @@ Function paging( ByVal arg_page_id )
 	If is_prev = TRUE Then
 		go_prev_page = start_page - page_per_block
 		strLink = "?page=" & go_prev_page &  page_param
-		retVal = retVal & chr(13)&chr(10)&"<a href=""" & strLink & """ ><li class=""page_prev"" >&lt;</li></a>"&chr(13)&chr(10)
+		retVal = retVal & chr(13)&chr(10)&"<a href=""" & strLink & """ ><li ><img src=""//img.healthi.kr/ikn/nursery/inc/pg_left_btn.jpg"" alt=""이전페이지"" /></li></a>"&chr(13)&chr(10)
 	Else 
-		retVal = retVal & chr(13)&chr(10)&"<li class=""page_prev"" >&lt;</li>"&chr(13)&chr(10)
+		retVal = retVal & chr(13)&chr(10)&"<li ><img src=""//img.healthi.kr/ikn/nursery/inc/pg_left_btn.jpg"" alt=""이전페이지"" /></li>"&chr(13)&chr(10)
 	End If
 
 	For loop_cnt = start_page To end_page step 1
@@ -1175,9 +1353,9 @@ Function paging( ByVal arg_page_id )
 	If is_next = TRUE Then
 		go_next_page = start_page + page_per_block
 		strLink = "?page=" & go_next_page & page_param
-		retVal = retVal & chr(13)&chr(10)&"<a href=""" & strLink & """ ><li class=""page_next"" >&gt;</li></a>"&chr(13)&chr(10)
+		retVal = retVal & chr(13)&chr(10)&"<a href=""" & strLink & """ ><li><img src=""//img.healthi.kr/ikn/nursery/inc/pg_right_btn.jpg"" alt=""다음페이지"" /></li></a>"&chr(13)&chr(10)
 	Else 
-		retVal = retVal & chr(13)&chr(10)&"<li class=""page_next"" >&gt;</li>"&chr(13)&chr(10)
+		retVal = retVal & chr(13)&chr(10)&"<li ><img src=""//img.healthi.kr/ikn/nursery/inc/pg_right_btn.jpg"" alt=""다음페이지"" /></li>"&chr(13)&chr(10)
 	End If
 
 
@@ -1194,198 +1372,233 @@ Function paging( ByVal arg_page_id )
 
 End Function
 
-'=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
-' 설명 : 카테고리 문자열을 전달받아 가장 첫번째 카테고리 정보를 반환한다.
-'=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
-Function cutCatrCode( ByVal arg_code )
-
-	Dim get_catr_arr, extr_catr_loop, depth1_code, depth2_code
-
-	depth1_code = ""
-
-	If InStr( arg_code, "," ) > 0 Then 
-
-		get_catr_arr = Split( arg_code , "," )
-
-		For extr_catr_loop = 0 To Ubound( get_catr_arr ) 
-			If ( Len( get_catr_arr(extr_catr_loop) ) > 3 ) Then 
-				depth2_code = Trim( get_catr_arr(extr_catr_loop) )
-				Exit For
-			Else 
-				If depth1_code = "" Then 
-					depth1_code = Trim( get_catr_arr(extr_catr_loop) )
-				End If 
-			End If 
-		Next 
-		
-		If depth2_code = "" Then 
-			cutCatrCode = depth1_code
-		Else 
-			cutCatrCode = depth2_code
-		End If 
-
+Function getNursryViewTdClass( ByVal arg_val )
+	If arg_val = "" Then 
+		getNursryViewTdClass = "classifying_empty"
 	Else 
-		cutCatrCode = Trim( arg_code )
+		getNursryViewTdClass = "classifying"
 	End If 
-
 End Function 
 
-
-
 '***********************************************
-' 작성자 : 백승환
-' 저널 광고 목록을 호출한다.
-' ad_obj : 정보를 담을 객체
+' 어린이집 미니홈피 카테고리 정보를 확인하고 insert 한다.
 '***********************************************
+Sub checkMenuState( ByVal arg_fid )
 
-Function getAdBannerList (ByVal page_name, ByRef ad_obj)
+	Dim db_obj, rs, query, menu_arr
+	Dim loop_cnt
+	Dim add_data_arr()
 
-	Dim QueryTable, QueryCol, QueryWhere, QueryOrder, record_len, i, rs_ad, SQL_ad, ad_info_arr(), zone_id, zone_flag, db_obj
+	Set menu_arr = New linkageArr
 
-	Select Case page_name
-		Case "main" : zone_flag = "1"
-		Case "sub" : zone_flag = "2"
-		Case "view" : zone_flag = "3"
-		Case Else : zone_flag = "0"	'광고 미포함 페이지
-	End Select 
+	Call menu_arr.add( 0, "name","어린이집소개" )
+	Call menu_arr.add( 0, "code","11" )
+	Call menu_arr.add( 0, "level","1" )
+	Call menu_arr.add( 0, "order","1" )
+	Call menu_arr.add( 0, "num","0" )
 
-	Set db_obj = db_conn.connection("health")
-	i = 1
+	Call menu_arr.add( 1, "name","알림마당" )
+	Call menu_arr.add( 1, "code","12" )
+	Call menu_arr.add( 1, "level","1" )
+	Call menu_arr.add( 1, "order","2" )
+	Call menu_arr.add( 1, "num","0" )
 
-	'ZoneCode -> 1: 헬라, 2: 저널
-	SQL_ad = "SELECT SEQ, ZoneID " &_
-			" FROM HealthLife.dbo.AdZone " &_
-			" WHERE SEQ IS NOT NULL AND Active ='1' AND ZoneCode = '3' " &_ 
-			" AND ZoneFlag = '"& zone_flag &"' " &_ 
-			" ORDER BY ZoneFlag ASC, ZoneIndex ASC "
-'ZoneCode -> 1: 헬라, 2: 저널, 3:우리아이뉴스
-	Set rs_ad = db_obj.Execute( SQL_ad  )
+	Call menu_arr.add( 2, "name","반소개" )
+	Call menu_arr.add( 2, "code","13" )
+	Call menu_arr.add( 2, "level","1" )
+	Call menu_arr.add( 2, "order","3" )
+	Call menu_arr.add( 2, "num","0" )
+
+	Call menu_arr.add( 3, "name","커뮤니티" )
+	Call menu_arr.add( 3, "code","14" )
+	Call menu_arr.add( 3, "level","1" )
+	Call menu_arr.add( 3, "order","4" )
+	Call menu_arr.add( 3, "num","0" )
+
+	Call menu_arr.add( 4, "name","원장인사말" )
+	Call menu_arr.add( 4, "code","1101" )
+	Call menu_arr.add( 4, "level","2" )
+	Call menu_arr.add( 4, "order","1" )
+	Call menu_arr.add( 4, "num","1" )
+
+	Call menu_arr.add( 5, "name","교직원소개" )
+	Call menu_arr.add( 5, "code","1102" )
+	Call menu_arr.add( 5, "level","2" )
+	Call menu_arr.add( 5, "order","1" )
+	Call menu_arr.add( 5, "num","2" )
+
+	Call menu_arr.add( 6, "name","운영및방침" )
+	Call menu_arr.add( 6, "code","1103" )
+	Call menu_arr.add( 6, "level","2" )
+	Call menu_arr.add( 6, "order","1" )
+	Call menu_arr.add( 6, "num","3" )
+
+	Call menu_arr.add( 7, "name","입학안내" )
+	Call menu_arr.add( 7, "code","1104" )
+	Call menu_arr.add( 7, "level","2" )
+	Call menu_arr.add( 7, "order","1" )
+	Call menu_arr.add( 7, "num","4" )
+
+	Call menu_arr.add( 8, "name","시설안내" )
+	Call menu_arr.add( 8, "code","1105" )
+	Call menu_arr.add( 8, "level","2" )
+	Call menu_arr.add( 8, "order","1" )
+	Call menu_arr.add( 8, "num","5" )
+
+	Call menu_arr.add( 9, "name","오시는길" )
+	Call menu_arr.add( 9, "code","1106" )
+	Call menu_arr.add( 9, "level","2" )
+	Call menu_arr.add( 9, "order","1" )
+	Call menu_arr.add( 9, "num","6" )
+
+	Call menu_arr.add( 10, "name","공지사항" )
+	Call menu_arr.add( 10, "code","1201" )
+	Call menu_arr.add( 10, "level","2" )
+	Call menu_arr.add( 10, "order","2" )
+	Call menu_arr.add( 10, "num","1" )
+
+	Call menu_arr.add( 11, "name","가정통신문" )
+	Call menu_arr.add( 11, "code","1202" )
+	Call menu_arr.add( 11, "level","2" )
+	Call menu_arr.add( 11, "order","2" )
+	Call menu_arr.add( 11, "num","2" )
+
+	Call menu_arr.add( 12, "name","구인구직" )
+	Call menu_arr.add( 12, "code","1203" )
+	Call menu_arr.add( 12, "level","2" )
+	Call menu_arr.add( 12, "order","2" )
+	Call menu_arr.add( 12, "num","3" )
+
+	Call menu_arr.add( 13, "name","이달의행사" )
+	Call menu_arr.add( 13, "code","1204" )
+	Call menu_arr.add( 13, "level","2" )
+	Call menu_arr.add( 13, "order","2" )
+	Call menu_arr.add( 13, "num","4" )
 	
-	If Not rs_ad.EOF Then 
-		Set ad_obj = Server.CreateObject("Scripting.Dictionary")
-		Do While Not rs_ad.EOF
-			zone_id = rs_ad("ZoneID")
-			Call getAdBannerInfo (zone_id, ad_info_arr)
-			If UBound(ad_info_arr) > 0 Then 
-				Call ad_obj.add(zone_id, ad_info_arr )
-			End If 
-			i = i + 1
-			rs_ad.MoveNext()
-		Loop
-	End If 
+	Call menu_arr.add( 14, "name","식단표" )
+	Call menu_arr.add( 14, "code","1205" )
+	Call menu_arr.add( 14, "level","2" )
+	Call menu_arr.add( 14, "order","2" )
+	Call menu_arr.add( 14, "num","5" )
 
-	'Dim arr
-	'arr = ad_obj.item("180626Z1024")
-	'Response.write (vartype(ad_obj.item("180626Z1024")))
-	'Response.write (arr(1).item("SEQ"))
+	Call menu_arr.add( 15, "name","추천도서" )
+	Call menu_arr.add( 15, "code","1207" )
+	Call menu_arr.add( 15, "level","2" )
+	Call menu_arr.add( 15, "order","2" )
+	Call menu_arr.add( 15, "num","7" )
 
-	rs_ad.Close
-	Set rs_ad = Nothing
+	Call menu_arr.add( 16, "name","자유게시판" )
+	Call menu_arr.add( 16, "code","1401" )
+	Call menu_arr.add( 16, "level","2" )
+	Call menu_arr.add( 16, "order","4" )
+	Call menu_arr.add( 16, "num","1" )
 
-	db_obj.close
-	Set db_obj = Nothing
+	Call menu_arr.add( 17, "name","Q&A" )
+	Call menu_arr.add( 17, "code","1402" )
+	Call menu_arr.add( 17, "level","2" )
+	Call menu_arr.add( 17, "order","4" )
+	Call menu_arr.add( 17, "num","2" )
+
+	Call menu_arr.add( 18, "name","원교육" )
+	Call menu_arr.add( 18, "code","1501" )
+	Call menu_arr.add( 18, "level","2" )
+	Call menu_arr.add( 18, "order","5" )
+	Call menu_arr.add( 18, "num","1" )
+
+	Call menu_arr.add( 19, "name","외부교육" )
+	Call menu_arr.add( 19, "code","1502" )
+	Call menu_arr.add( 19, "level","2" )
+	Call menu_arr.add( 19, "order","5" )
+	Call menu_arr.add( 19, "num","2" )
+
+	Call menu_arr.add( 20, "name","일정표" )
+	Call menu_arr.add( 20, "code","1206" )
+	Call menu_arr.add( 20, "level","2" )
+	Call menu_arr.add( 20, "order","2" )
+	Call menu_arr.add( 20, "num","6" )
+
+	Set db_obj = db_conn.connection( "kids" )
 	
-End Function ' // getAdBannerList
+	If arg_fid = "" Then 
+		Call wm.errorHandler( "view", "checkMenuState", "어린이집 기본키 누락" )
+	Else 
+		
+		' 현재 어린이집 코드값으로 MiniCategory 테이블을 조회한다.
+		query = "SELECT COUNT(IDX) AS cnt FROM MiniCategory WHERE FacilityID='"& arg_fid &"' "
+		Set rs = db_obj.Execute( query )
 
-'***********************************************
-' 작성자 : 백승환
-' 저널 광고 정보를 호출한다.
-' zone_id : 광고 키
-' ad_info_arr : 정보를 담을 배열
-'***********************************************
+		If rs("cnt") = 0 Then 
+			' 생성
+			Dim query_std, query_add
 
-Function getAdBannerInfo (ByVal zone_id, ByRef ad_info_arr)
+			query_std = " INSERT INTO MiniCategory (	FacilityID, " &_
+						"								CatrCode " &_
+						"								, CatrName" &_
+						"								, CatrOrder" &_
+						"								, CatrLevel" &_
+						"								, CatrNum " &_
+						"								, DelFlag " &_
+						"								, IsPublish " &_
+						"								, RegDate " &_
+						"							) VALUES "
+			If menu_arr.count > 0 Then 
+				
+				ReDim Preserve add_data_arr( -1 )
 
-	Dim QueryTable, QueryCol, QueryWhere, QueryOrder, i, ad_len, rs_ad_info, SQL_ad_info, rs_count, db_obj
-	
-	Set db_obj = db_conn.connection("health")
-	i = 1
+				For loop_cnt = 0 To menu_arr.count
 
-	SQL_ad_info = "SELECT SEQ, AdID, ZoneID, AdName, AdLink, AdTarget, AdSource " &_
-				" FROM HealthLife.dbo.AdInfo " &_
-				" WHERE SEQ IS NOT NULL AND Active = '1' AND ( sDate <= getdate() AND eDate >= getdate() ) AND ( ( AdImpression < MaxImpression ) AND ( AdClick < MaxClick ) ) "&_
-				" AND ZoneID = '"& zone_id &"' "&_
-				" ORDER BY RegDate DESC "
+					ReDim Preserve add_data_arr( Ubound( add_data_arr ) + 1 )
+					
+					add_data_arr( Ubound( add_data_arr ) ) =	"("&_
+																"'" & arg_fid & "'" &_
+																",'" & menu_arr.getVal( loop_cnt, "code" ) & "'" &_
+																",'" & menu_arr.getVal( loop_cnt, "name" ) & "'" &_
+																",'" & menu_arr.getVal( loop_cnt, "order" ) & "'" &_
+																",'" & menu_arr.getVal( loop_cnt, "level" ) & "'" &_
+																",'" & menu_arr.getVal( loop_cnt, "num" ) & "'" &_
+																",'0'" &_
+																",'1'" &_
+																",GETDATE() " &_
+																")"
+				Next 
 
+				query_add = Join( add_data_arr, ",")
+					
+				query = query_std & query_add
 
-	Set rs_ad_info = Server.CreateObject("ADODB.RecordSet")
-	rs_ad_info.CursorLocation = 3
-	rs_ad_info.Open SQL_ad_info, db_obj, 0, 1, 1
+				db_obj.Execute( query )
 
-	ReDim Preserve ad_info_arr(rs_ad_info.recordcount)
-
-	If Not rs_ad_info.Eof Then 
-		Do While not rs_ad_info.eof	
-			Set ad_info_arr(i) = Server.CreateObject("Scripting.Dictionary")
-			Call ad_info_arr(i).add("SEQ", Trim( rs_ad_info("SEQ") ) )	
-			Call ad_info_arr(i).add("AdID", Trim( rs_ad_info("AdID") ) )	
-			Call ad_info_arr(i).add("ZoneID", Trim( rs_ad_info("ZoneID") ) )	
-			Call ad_info_arr(i).add("AdName", Trim( rs_ad_info("AdName") ) )	
-			Call ad_info_arr(i).add("AdLink", Trim( rs_ad_info("AdLink") ) )	
-			Call ad_info_arr(i).add("AdTarget", Trim( rs_ad_info("AdTarget") ) )	
-			Call ad_info_arr(i).add("AdSource", "http://img.healthi.kr" & Trim( rs_ad_info("AdSource") ) )	
-
-			i = i + 1
-			rs_ad_info.MoveNext()
-		Loop
-	End If 
-
-	rs_ad_info.Close
-	Set rs_ad_info = Nothing
-
-End Function ' // getAdBannerInfo
-'***********************************************
-'	팝업 DB 호출
-'***********************************************
-Function getPopupInfo (ByVal zone_id)
-
-	Dim i
-	Dim rs_popup, SQL_popup
-	Dim json_popup_arr(), make_tmp_json, db_obj
-
-	i = 0
-	db_obj = db_conn.connection("health")
-
-	SQL_popup = " SELECT SEQ, AdID, AdType, AdName, AdMemo, AdLink, AdTarget, AdSource, AdWidth, AdHeight "&_
-				" FROM AdInfo "&_
-				" WHERE SEQ IS NOT NULL AND Active = '1' AND ( sDate <= getdate() AND eDate > getdate() ) AND ZoneID = '"& zone_id &"' "
-	
-	Set rs_popup = Server.CreateObject("ADODB.RecordSet")
-	rs_popup.CursorLocation = 3
-	
-	rs_popup.Open SQL_popup, db_obj, 0, 1, 1
-
-	ReDim Preserve json_popup_arr(rs_popup.recordcount)
-	If Not rs_popup.Eof Then 
-		Do While not rs_popup.eof	
-			Set make_tmp_json = jsObject()
-
-			make_tmp_json("popupID") = "P"&Trim( rs_popup("AdID") )
-			make_tmp_json("linkPath") = Split(Trim( rs_popup("AdLink") ), ", ")
-			make_tmp_json("linkTarget") = Split(Trim( rs_popup("AdTarget") ), ", ")
-			make_tmp_json("imgSrc") = Split(Trim( rs_popup("AdSource") ), ", ")
-			make_tmp_json("popupPosition") = Trim( rs_popup("AdHeight") ) & "_" & Trim( rs_popup("AdWidth") )
-			make_tmp_json("popupImgScale") = Trim( rs_popup("AdMemo") )
-			If Trim( rs_popup("AdType") ) = 0 Then
-				make_tmp_json("useModalMode") = False
-			Else 
-				make_tmp_json("useModalMode") = True
 			End If 
 			
-			Set json_popup_arr(i) = make_tmp_json
+		End If 
 
-			i = i + 1
-			rs_popup.MoveNext()
-		Loop
 	End If 
+		
+End Sub ' // checkMenuState
 
-	getPopupInfo = toJSON( json_popup_arr )
+'***********************************************
+' 어린이집 명칭을 반환
+'***********************************************
+Function getChildcareName( ByVal arg_fid )
+	
+	Dim db_obj, rs, query, result
+	Set db_obj = db_conn.connection( "kids" )
+	
+	If arg_fid = "" Then 
+		Call wm.errorHandler( "view", "getChildcareName", "어린이집 기본키 누락" )
+	Else 
+		query = "SELECT *, ( convert(varchar(16), RegDate, 120) ) AS conv_reg_date FROM ChildDetails WHERE STcode='"& arg_fid &"' "
+		Set rs = db_obj.Execute( query )
 
-	rs_popup.Close
-	Set rs_popup = Nothing
+		If rs.Eof Or rs.Bof Then 
+			result = ""
+		Else 
+			result = nullToSpace( rs("Crname") )
+		End If 
+	End If 
+	
+	getChildcareName = result
 
-	Set db_obj = Nothing
-
-End Function ' // getPopupInfo
+End Function ' // getChildcareName
 
 %>

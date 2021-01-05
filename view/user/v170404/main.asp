@@ -1,6 +1,5 @@
 <!-- #include file = "./inc/_head.asp" -->
-
-    <body style="position:relative;" >
+    <body>
     
         <div class="wrap">
 
@@ -10,21 +9,10 @@
                 <!-- #include file = "./inc/_top_menu.asp" -->
                           
             </div>
-			
-			
-			<div  style="margin-top:40px">			
-				<div style="width:1080px; margin:0 auto; height: 70px;" >
-					
-					<!-- a href="http://news.ikn.kr/news/view?ArticleID=170508107127" title="마디터 모집 우리아이뉴스로 이동 (새창)" -->
-					<a href="https://docs.google.com/forms/d/e/1FAIpQLSdhMR43l9nX2uZEZ7Aq6lRJYWAIOx68-BBEep9y3hgL6X8lww/viewform" title="마디터 모집 우리아이뉴스로 이동 (새창)" target="_blank" >
-						<img src="<%=wm.image_domain%>/ikn/news/banner/main/maditor.jpg" alt="마디터 배너" />
-					</a>
-				</div>
-			</div>
 
-            <div class="container" style="margin-top:10px"  >
-
-                <div class="news_combi"  >
+            <div class="container">
+                
+                <div class="news_combi">
 
 				    <div class="news_left">
                     
@@ -46,7 +34,7 @@
 								<div class="news_main">
 									<div class="title_main">
 										<a href="/news/view?ArticleID=<%=wm.getVal("hl_ArticleID")%>&catr=<%=wm.getVal("hl_CatrCode")%>">
-											<%=CutString(wm.getVal("hl_Subject"), 24, "")%>
+											<%=CutString(wm.getVal("hl_Subject"), 32, "")%>
 										</a>
 									</div>
 
@@ -175,7 +163,7 @@
 										<div class="related_half">
 											<div class="related_icon"> 
 												<a href="/news/view?ArticleID=<%=article_id%>&catr=<%=catr_code%>">
-													<img src="<%=wm.image_path%>/inc/related_icon.png"/>
+													<img src="//park.compa.kr/iknnews/image/related_icon.png"/>
 												</a>
 											</div>
 
@@ -226,7 +214,7 @@
 										<div class="related_half">
 											<div class="related_icon"> 
 												<a href="/news/view?ArticleID=<%=article_id%>&catr=<%=catr_code%>">
-													<img src="<%=wm.image_path%>/inc/related_icon.png"/>
+													<img src="//park.compa.kr/iknnews/image/related_icon.png"/>
 												</a>
 											</div>
 
@@ -292,7 +280,7 @@
 									<div class="related_news">
 										<div class="related_icon"> 
 											<a href="/news/view?ArticleID=<%=article_id%>&catr=<%=catr_code%>">
-												<img src="<%=wm.image_path%>/inc/related_icon.jpg"/>
+												<img src="//park.compa.kr/iknnews/image/related_icon.jpg"/>
 											</a>
 										</div>
 
@@ -383,12 +371,16 @@
 
 									<div class="sns"><!-- sns -->
 										<ul>
-											<li class="sns_tab snsbtn_on "><a href="#"></a></li>
-											<li class="sns_tab "><a href="#"></a></li>
-											
+											<li class="sns_tab snsbtn_on"><a href="#"></a></li>
+											<li class="sns_tab"><a href="#"></a></li>
 										</ul>
 										<div class="scroll_hide">
 											<div class="scroll">
+												<div id="instagram" class="sns_content">
+													<!-- SnapWidget -->
+													<iframe src="https://snapwidget.com/embed/347472" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:273px; height:290px"></iframe>
+												</div>
+												
 												<div id="fb-root" class="sns_content">
 													<script>(function(d, s, id) {
 													  var js, fjs = d.getElementsByTagName(s)[0];
@@ -397,16 +389,8 @@
 													  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8";
 													  fjs.parentNode.insertBefore(js, fjs);
 													}(document, 'script', 'facebook-jssdk'));</script>
-													<div class="fb-page" data-href="https://www.facebook.com/ikidsnews" data-tabs="timeline" data-width="300" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/ikidsnews" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/ikidsnews"></a></blockquote></div>
+													<div class="fb-page" data-href="https://www.facebook.com/healthikr" data-tabs="timeline" data-width="300" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/healthikr" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/healthikr"></a></blockquote></div>
 												</div>
-
-												<div id="instagram" class="sns_content">
-													<!-- SnapWidget 
-													<iframe src="https://snapwidget.com/embed/347472" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:273px; height:290px"></iframe>
-													-->
-													<iframe src="https://snapwidget.com/embed/498193" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:280px; height:280px"></iframe>
-												</div>
-
 											</div>
 										</div>
 									</div><!-- sns //-->
@@ -415,15 +399,29 @@
 								<div class="area_right_photobox">							
                                     <div class="area_right_title"  >
                                         <span><a href="news/list?catr=1701">카드뉴스</a></span>
-										<div class="dots" id="card_dot" ></div>
+										
+										<!--
+										<div class="dots">
+											<div class="dot">
+												<a href="#"><img src="//park.compa.kr/iknnews/image/dot.jpg" alt="" /></a>
+											</div>
+											<div class="dot">
+												<a href="#"><img src="//park.compa.kr/iknnews/image/dot_blank.jpg" alt="" /></a>
+											</div>
+											<div class="dot">
+												<a href="#"><img src="//park.compa.kr/iknnews/image/dot_blank.jpg" alt="" /></a>
+											</div>
+										</div>
+										-->
+                                        
                                     </div>
 
-									<div class="bxslider_side_card" >
+
 									<%
 										main_news_arr = wm.getVal("card_news")
 
 										If Ubound( main_news_arr ) > -1 Then 
-											For loop_cnt = 0 To Ubound( main_news_arr )
+											For loop_cnt = 0 To 0
 												
 												article_id = main_news_arr(loop_cnt).item("ArticleID")
 												catr_code = main_news_arr(loop_cnt).item("CatrCode")
@@ -433,41 +431,49 @@
 
 
 									%>
-									
-										<div>
-											<div class="area_right_photo" style="height:160px;overflow:hidden">
-												<a href="/news/view?ArticleID=<%=article_id%>&catr=<%=catr_code%>">
-													<img src="<%=img_path%>" alt="<%=subject%>" style="width:300px;" />
-												</a>
-											</div>
-											<div class="area_right_phototitle" style="margin-top:10px" >
-												<a href="/news/view?ArticleID=<%=article_id%>&catr=<%=catr_code%>">
-													<%=subject%>
-												</a>
-											</div>
-										</div>
+                                    <div class="area_right_photo" style="height:160px;overflow:hidden">
+                                        <a href="/news/view?ArticleID=<%=article_id%>&catr=<%=catr_code%>">
+											<img src="<%=img_path%>" alt="<%=subject%>" style="width:300px;" />
+										</a>
+                                    </div>
+                                    <div class="area_right_phototitle" style="margin-top:10px" >
+                                        <a href="/news/view?ArticleID=<%=article_id%>&catr=<%=catr_code%>">
+											<%=subject%>
+										</a>
+                                    </div>
 									
 									<%
 												Response.Flush
 											Next 
 										End If 
 									%>
-									</div>
 								</div>
 
 
 								<div class="area_right_photobox">
                                     <div class="area_right_title">
                                         <span><a href="news/list?catr=1302">인터뷰</a></span>
-										<div class="dots" id="interview_dot" ></div> 
+										<!--
+										<div class="dots">
+											<div class="dot">
+												<a href="#"><img src="//park.compa.kr/iknnews/image/dot.jpg" alt="" /></a>
+											</div>
+											<div class="dot">
+												<a href="#"><img src="//park.compa.kr/iknnews/image/dot_blank.jpg" alt="" /></a>
+											</div>
+											<div class="dot">
+												<a href="#"><img src="//park.compa.kr/iknnews/image/dot_blank.jpg" alt="" /></a>
+											</div>
+										</div>
+										-->    
                                     </div>
 									
-									<div class="bxslider_side_interview" >
+
                                     <%
 										main_news_arr = wm.getVal("interview")
 
 										If Ubound( main_news_arr ) > -1 Then 
-											For loop_cnt = 0 To Ubound( main_news_arr )
+											For loop_cnt = 0 To 0
 												
 												article_id = main_news_arr(loop_cnt).item("ArticleID")
 												catr_code = main_news_arr(loop_cnt).item("CatrCode")
@@ -477,25 +483,23 @@
 
 
 									%>
-										<div>
-											<div class="area_right_photo" style="height:160px;overflow:hidden">
-												<a href="/news/view?ArticleID=<%=article_id%>&catr=<%=catr_code%>">
-													<img src="<%=img_path%>" alt="<%=subject%>" style="width:300px;" />
-												</a>
-											</div>
-											<div class="area_right_phototitle" style="margin-top:15px" >
-												<a href="/news/view?ArticleID=<%=article_id%>&catr=<%=catr_code%>">
-													<%=subject%>
-												</a>
-											</div>
-										</div>
+                                    <div class="area_right_photo" style="height:160px;overflow:hidden">
+                                        <a href="/news/view?ArticleID=<%=article_id%>&catr=<%=catr_code%>">
+											<img src="<%=img_path%>" alt="<%=subject%>" style="width:300px;" />
+										</a>
+                                    </div>
+                                    <div class="area_right_phototitle" style="margin-top:15px" >
+                                        <a href="/news/view?ArticleID=<%=article_id%>&catr=<%=catr_code%>">
+											<%=subject%>
+										</a>
+                                    </div>
 									
 									<%
 												Response.Flush
 											Next 
 										End If 
 									%>
-									</div>
+
 								</div>
 
 
@@ -522,7 +526,7 @@
 										%>
 										<div class="area_right_list">
 											<div class="list_n">												
-												<img src="<%=wm.image_path%>/inc/rightlist_<%=( loop_cnt + 1)%>.jpg" alt="" />	
+												<img src="//park.compa.kr/iknnews/image/rightlist_<%=( loop_cnt + 1)%>.jpg" alt="" />	
 											</div>
 											
 											<%
@@ -736,7 +740,7 @@
                                 <div class="list_set">
 									<!--
                                     <div class="list_icon">                                        
-                                        <img src="<%=wm.image_path%>/inc/contributing_icon.jpg"/>
+                                        <img src="//park.compa.kr/iknnews/image/contributing_icon.jpg"/>
                                     </div>
 									-->
                                     <div class="list_icon_title">
@@ -754,14 +758,84 @@
                             </div>
                             
                         </div>
-
+                        
+                        
                     </div>
 
 					<%
 						End If 
 					%>
 
+					<%
+						main_news_arr = wm.getVal("result_moms_news")
+
+						If Ubound( main_news_arr ) > -1 Then 
+					%>
+                    <div class="news_thumblist">
+                          
+                        <div class="area_left">
+
+                            <div class="line_thumb4" >
+
+                                <%
+									' 엄마기자단
+									Call makeMainLeft("15")
+								%>
+
+                            </div>
+
+                        </div>
+
+
+						<%
+							
+							
+								For loop_cnt = 0 To ubound(main_news_arr)
+									
+									article_id = main_news_arr(loop_cnt).item("ArticleID")
+									catr_code = main_news_arr(loop_cnt).item("CatrCode")
+									img_path = main_news_arr(loop_cnt).item("img_path")
+									subject = main_news_arr(loop_cnt).item("Subject")
+									contents = main_news_arr(loop_cnt).item("Contents")
+		
+
+						%>
+						<div class="line_thumb_r">  
+
 					
+							<div class="thumb_set4">
+								 
+							
+								<div class="thumb4" style="width:196;">
+									<a href="/news/view?ArticleID=<%=article_id%>&catr=<%=catr_code%>">
+										<img src="<%=img_path%>" style="width:194px;max-height:109px" />
+									</a>
+								</div>
+								
+															   
+								<div class="title_text4" >
+									<a href="/news/view?ArticleID=<%=article_id%>&catr=<%=catr_code%>">
+										<div class="title" >
+											<%=subject%>
+										</div>
+									</a>
+								</div>
+
+							</div>
+						</div>
+						<%
+								Next 
+
+							
+						%>  
+                        
+                    </div>
+
+                </div>
+
+				<%
+					End If 
+				%>
             </div>
         </div>
            
@@ -776,7 +850,7 @@
 		<div class="floating" id="naver_post_area" >
 			<!--
 			<div class="floating_arr_l">
-				<img src="<%=wm.image_path%>/inc/arr_l.png"/>
+				<img src="//park.compa.kr/iknnews/image/arr_l.png"/>
 			</div>
 			-->
 
@@ -784,7 +858,7 @@
 
 				<div class="floating_left">
 
-				   <a href="http://post.naver.com/ikidsnews" target="_blank" title="우리아이 네이버 포스트로 이동 (새창)" ><p>포스트</p></a>
+				   <a href="http://post.naver.com/my.nhn?memberNo=35540755&navigationType=push" target="_blank" title="헬스앤라이프 네이버 포스트로 이동 (새창)" ><p>포스트</p></a>
 				
 					<ul>
 						<li><a href="http://post.naver.com/my/series/detail.nhn?seriesNo=255319&memberNo=35540755" target="_blank" title="네이버 포스트 키즈헬스로 이동 (새창)" ><span>키즈헬스</span></a></li>
@@ -796,19 +870,15 @@
 				<div class="floating_boxes">
 
 					<%
-						Dim img_info_main 		
+							
 						For loop_cnt = 0 To Ubound( main_news_arr )
 							
 							article_id = main_news_arr(loop_cnt).item("ArticleID")
 							catr_code = main_news_arr(loop_cnt).item("CatrCode")
 							img_path = main_news_arr(loop_cnt).item("img_path")
-							img_info_main = main_news_arr(loop_cnt).item("img_info_main")
-							subject = main_news_arr(loop_cnt).item("main_subject")
+							subject = main_news_arr(loop_cnt).item("Subject")
 							contents = main_news_arr(loop_cnt).item("Contents")
-							
-							If img_info_main <> "" Then 
-								img_path = img_info_main
-							End If 
+
 
 					%>
 					<div class="floating_box">
@@ -834,7 +904,7 @@
 			
 			<!--
 			<div class="floating_arr_r">
-				<img src="<%=wm.image_path%>/inc/arr_r.png"/>
+				<img src="//park.compa.kr/iknnews/image/arr_r.png"/>
 			</div>
 			-->
 						
@@ -845,15 +915,6 @@
 		%>
 		<script type="text/javascript">
 		<!--
-
-			
-			$(document).ready(function(){
-				if ( checkFlatform()["flatform"] == "pc"  ) {
-					popupOpen();
-				}
-			});
-
-
 			/* ------ SNS 탭 메뉴 ------ */
 			$(".sns_content").hide();
 			$(".sns_content:first").show();
@@ -897,93 +958,9 @@
 				}
 				
 			});
-			
-
-			//--------------------- popup
-
-			var popup_info = [
-				{
-					"popup_id" : "2017end"
-					,"popup_top" : 240
-					,"popup_left" : 1100
-					,"popup_href" : ""
-					,"popup_target" : ""
-					,"popup_img" : "http://img.compa.kr/ikn/popup/1228_2018popup.jpg"
-					,"popup_width" : 400
-					,"popup_height" : 400
-					,"use_flag" : false
-				}
-				,{
-					"popup_id" : "popup_seol_2018"
-					,"popup_top" : 240
-					,"popup_left" : 1100
-					,"popup_href" : ""
-					,"popup_target" : ""
-					,"popup_img" : "http://img.healthi.kr/img/popup/seol_2018_ikn.jpg"
-					,"popup_width" : 400
-					,"popup_height" : 400
-					,"use_flag" : false
-				}
-			];
-
-			function popupOpen() {
-
-				jQuery.each(popup_info, function(idx, item){
-					if(item.use_flag == true ) {
-						if( getCookie( item.popup_id ) !== "closed" ) {
-							jQuery(".wrap").append( jQuery("#tmplate_main_popup").tmpl( item ) );  
-						}
-					}
-					
-				});
-			}
-
-			function closePopup( popup_id, type ) {
-    
-				if( type == "not_more"  ) {    // 쿠키값 설정.
-					var todayDate = new Date();
-					todayDate.setDate( todayDate.getDate() + 1 );
-					document.cookie = popup_id + "=" + escape("closed") + "; path=/; expires=" + todayDate.toGMTString() + ";"
-				}
-				
-				jQuery( "#_layer_popup_" + popup_id ).hide();
-				
-			}
-			
-			
-			
-			//--------------------- popup
 
 		//-->
 		</script>
-		<script id="tmplate_main_popup" type="text/x-jquery-tmpl">
-			<div style="position: absolute;top:${popup_top}px;left:${popup_left}px;z-index:10;border:3px solid #ced2d7;" id="_layer_popup_${popup_id}" >
-			   <div style="background-color: #fff;width:${popup_width}px;height:${popup_height}px">
-					{{if popup_href == ""}}
-					  <img src="${popup_img}" id="popup_img_${popup_id}" />
-					{{else}}
-					<a href="${popup_href}" target="${popup_target}" >
-						<img src="${popup_img}" id="popup_img_${popup_id}" />
-					</a>
-					{{/if}}
-			   </div>
-				<div style="width:100%;height:35px;background-color: #ced2d7;" >
-					<div style="float:left;margin:0px 0px 5px 10px; padding-top:10px; font-size:12px; ">
-						<span style="color:#7f7f7f;cursor:pointer" onclick="closePopup( '${popup_id}', 'not_more' )" >
-							오늘 하루 더 이상 보지 않기
-						</span>
-					</div>
-					<div style="float:right;margin:0px 10px 5px 0; padding-top:10px; font-size:12px; ">
-						<span style="color:#7f7f7f;cursor:pointer" onclick="closePopup( '${popup_id}', 'close' );">
-							닫기
-						</span>
-					</div>
-				</div>
-			</div>
-		</script>
     </body>
-
-	
     
-
 </html>

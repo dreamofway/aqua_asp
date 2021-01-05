@@ -13,30 +13,39 @@
 
 					<div class="area_right_title">
 						<span><a href="news/list?catr=1701">카드뉴스</a></span>
-						<div class="dots" id="card_dot" ></div>
+						<!--
+						<div class=dots>
+							<div class=dot>
+								<a href="#"><img src="//park.compa.kr/iknnews/image/dot.jpg" alt="" /></a>
+							</div>
+							<div class=dot>
+								<a href="#"><img src="//park.compa.kr/iknnews/image/dot_blank.jpg" alt="" /></a>
+							</div>
+							<div class=dot>
+								<a href="#"><img src="//park.compa.kr/iknnews/image/dot_blank.jpg" alt="" /></a>
+							</div>
+						</div>
+						-->
 					</div>
 
-					<div class="bxslider_side_card" >
+
 					<%
 						Do While Not right_card_news.Eof 
 					%>
-						<div>
-							<div class="area_right_photo" style="height:160px;overflow:hidden" >
-								<a href="/news/view?ArticleID=<%=right_card_news("ArticleID")%>&catr=<%=right_card_news("CatrCode")%>">
-									<img src="<%=wm.image_domain & right_card_news("img_path")%>" alt="<%=right_card_news("Subject")%>" style="width:300px;" />
-								</a>
-							</div>
-							<div class="area_right_phototitle" style="margin-top:15px" >
-								<a href="/news/view?ArticleID=<%=right_card_news("ArticleID")%>&catr=<%=right_card_news("CatrCode")%>">
-									<%=right_card_news("Subject")%>
-								</a>
-							</div>
-						</div>
+					<div class="area_right_photo" style="height:160px;overflow:hidden" >
+						<a href="/news/view?ArticleID=<%=right_card_news("ArticleID")%>&catr=<%=right_card_news("CatrCode")%>">
+							<img src="<%=wm.image_domain & right_card_news("img_path")%>" alt="<%=right_card_news("Subject")%>" style="width:300px;" />
+						</a>
+					</div>
+					<div class="area_right_phototitle" style="margin-top:15px" >
+						<a href="/news/view?ArticleID=<%=right_card_news("ArticleID")%>&catr=<%=right_card_news("CatrCode")%>">
+							<%=right_card_news("Subject")%>
+						</a>
+					</div>
 					<%
 							right_card_news.MoveNext()
 						Loop 
 					%>
-					</div>
 				</div>
 				<%
 					End If 
@@ -49,30 +58,39 @@
 
 					<div class="area_right_title">
 						<span><a href="news/list?catr=1302">인터뷰</a></span>
-						<div class="dots" id="interview_dot" ></div> 
+						<!--
+						<div class=dots>
+							<div class=dot>
+								<a href="#"><img src="//park.compa.kr/iknnews/image/dot.jpg" alt="" /></a>
+							</div>
+							<div class=dot>
+								<a href="#"><img src="//park.compa.kr/iknnews/image/dot_blank.jpg" alt="" /></a>
+							</div>
+							<div class=dot>
+								<a href="#"><img src="//park.compa.kr/iknnews/image/dot_blank.jpg" alt="" /></a>
+							</div>
+						</div>
+						-->
 					</div>
 
-					<div class="bxslider_side_interview" >
+
 					<%
 						Do While Not right_interview.Eof 
 					%>
-						<div>
-							<div class="area_right_photo" style="height:160px;overflow:hidden" >
-								<a href="/news/view?ArticleID=<%=right_interview("ArticleID")%>&catr=1302">
-									<img src="<%=wm.image_domain & right_interview("img_path")%>" alt="<%=right_interview("Subject")%>" style="width:300px;" />
-								</a>
-							</div>
-							<div class="area_right_phototitle" style="margin-top:15px" >
-								<a href="/news/view?ArticleID=<%=right_interview("ArticleID")%>&catr=1302">
-									<%=right_interview("Subject")%>
-								</a>
-							</div>
-						</div>
+					<div class="area_right_photo" style="height:160px;overflow:hidden" >
+						<a href="/news/view?ArticleID=<%=right_interview("ArticleID")%>&catr=1302">
+							<img src="<%=wm.image_domain & right_interview("img_path")%>" alt="<%=right_interview("Subject")%>" style="width:300px;" />
+						</a>
+					</div>
+					<div class="area_right_phototitle" style="margin-top:15px" >
+						<a href="/news/view?ArticleID=<%=right_interview("ArticleID")%>&catr=1302">
+							<%=right_interview("Subject")%>
+						</a>
+					</div>
 					<%
 							right_interview.MoveNext()
 						Loop 
 					%>
-					</div>
 				</div>
 				<%
 					End If 
@@ -102,7 +120,7 @@
 						%>
 						<div class="area_right_list">
 							<div class="list_n">												
-								<img src="<%=wm.image_path%>/inc/rightlist_<%=( loop_cnt + 1)%>.jpg" alt="" />	
+								<img src="//park.compa.kr/iknnews/image/rightlist_<%=( loop_cnt + 1)%>.jpg" alt="" />	
 							</div>
 							
 							<%
@@ -143,7 +161,7 @@
 				</div>
 				<div class="area_right_baner">
 					<a href="http://www.chamdahan.com/goods/goods_list.html" target="_blank" >
-						<img src="<%=wm.image_path%>/inc/right_banner.jpg" alt="참다한 홍삼" />	
+						<img src="//park.compa.kr/iknnews/image/right_banner.jpg" alt="참다한 홍삼" />	
 					</a>
 				</div>
 		</div>

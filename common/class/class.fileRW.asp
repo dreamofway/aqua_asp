@@ -223,7 +223,6 @@ Class fileRW
 					file_obj.Write( replaced_text )
 					
 					' 7 변경된 페이지 적용을 위해 reload
-					'echoBr( getServerVal("HTTP_X_ORIGINAL_URL") )
 					Response.Redirect "/" & getServerVal("HTTP_X_ORIGINAL_URL")
 				End If 
 

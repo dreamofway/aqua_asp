@@ -39,7 +39,6 @@ Class workManager
 	Public ogp_image ' SNS 공유 이미지
 	Public meta_keywords ' SNS 공유 키워드
 	Public current_path_arr
-	Public view_page_flag
 	
 	Private Sub Class_Initialize() 
 		
@@ -52,7 +51,6 @@ Class workManager
 		site_referer = getServerVal( "HTTP_REFERER" )
 
 		request_parameter_key = "request_parameter"
-		view_page_flag = False 
 
 		If data.Exists( "view_val" ) = False Then 			
 			Call data.add( "view_val",  Server.CreateObject("Scripting.Dictionary") )
@@ -521,31 +519,61 @@ Class workManager
 	'***********************************************
 	Private Function httpRequestInjectionCheck( ByVal arg_value )
 
-		Dim reg_exp_obj, result, result_match
+		Dim injection_check_arr, injection_result, check_loop
 
-		Set reg_exp_obj = New RegExp
+		injection_result = False
 		
-		reg_exp_obj.Pattern = "(<(no)?script[^>]*>.*?</(no)?script>|(decare[\s]*(@variable|@@variable))|select.*?from|insert[\s]*into|update.*?set|delete[\s]*from)"
+		injection_check_arr = Array(_
+			
+			 "@variable" _
+			, "@@variable" _
+			, "+" _
+			, " print " _
+			, " set " _
+			, "%" _
+			, "<script>" _
+			, "<SCRIPT>" _
+			, "script" _
+			, "SCRIPT" _
+			, "or " _
+			, "union " _
+			, "and " _			
+			, "openrowset " _
+			, "xp_ " _
+			, "XP_ " _
+			, "decare " _
+			, "DECLARE " _
+			, "insert " _
+			, "INSERT " _
+			, "select " _
+			, "SELECT " _
+			, "update " _
+			, "UPDATE " _
+			, "delete " _
+			, "DELETE " _
+			, "shutdown " _
+			, "SHUTDOWN " _
+			, "drop " _
+			, "DROP " _
+			, "--" _
+			, "/*" _
+			, "*/" _
+		)
 
-		reg_exp_obj.Global = True                 ' 문자열 전체를 검색함
-		reg_exp_obj.IgnoreCase = True             ' 대.소문자 구분 안함
+		For check_loop = 0 to Ubound( injection_check_arr )
 
-		Set result = reg_exp_obj.Execute( arg_value )
+			If InStr( 1, arg_value ,injection_check_arr( check_loop ), 1 ) > 0 Then
+
+				injection_result = True
+
+				Response.write "<br /> injection_result : " & injection_check_arr( check_loop ) & "<br />"
+
+				Exit For 
+
+			End If
+		Next
 		
-'		For Each result_match In result
-'			With Response
-'				.Write "<font size=""2"">"
-'				.Write "문자열의 첫 글자의 Index 위치 :: " & result_match.FirstIndex & "<br>"
-'				.Write "문자열의 길이 :: " & result_match.Length & "<br>"
-'				.Write "문자열의 내용 :: " & result_match.Value & "<br>"
-'				.Write "</font><br>"
-'				.Flush
-'			End With
-'		Next  
-
-		httpRequestInjectionCheck = reg_exp_obj.test( arg_value )
-
-		Set reg_exp_obj = Nothing
+		httpRequestInjectionCheck = injection_result
 
 	End Function ' // httpRequestInjectionCheck
 

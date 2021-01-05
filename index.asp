@@ -17,7 +17,7 @@
 	'---------------------------------------------------------------------
 	
 	'---------------------------------------------------------------------
-	' 사이트 기본환경 설정
+	' 사이트 기본한경 설정
 	'---------------------------------------------------------------------
 	Option Explicit
 
@@ -43,47 +43,35 @@
 	Set rw = New fileRW
 	Set db_conn = New DBHandler
 	
-	
-	wm.image_domain = "http://img.healthi.kr"
-	wm.image_path = "http://img.healthi.kr/ikn/news"
+	wm.image_domain = "//img.compa.kr"
+	wm.image_path = "//img.compa.kr/ikn/nursery"
 	wm.image_upload_path = "D:\home\img.healthi.kr\_upload"
-	wm.admin_view_path = "/view/admin/v170413"
-	wm.user_view_path = "/view/user/v180910" 
+	wm.admin_view_path = ""
+	wm.user_view_path = "/view/user/v170428"
 	wm.use_upload_obj = "abc"
-	wm.meta_title = "우리아이뉴스"
-	wm.meta_description = "우리아이를 위한 세상의 모든 정보"
-	wm.meta_keywords = "교육,문화,칼럼,리포트,신문,기사,뉴스,영상,취재,건강,헬스닥터,헬스앤라이프,우리아이뉴스"
+	wm.meta_title = "[우리아이]어린이집"
+	wm.meta_description = "콤파의 또 하나의 대표사이트 우리아이 어린이집 입니다. 우리아이어린이집에서는 지역별 어린이집 정보 및 육아관련 정보를 모든 고객님들께 제공합니다."
+	wm.meta_keywords = "교육,문화,칼럼,리포트,신문,기사,뉴스,영상,취재,건강,헬스닥터,헬스앤라이프,우리아이뉴스, 우리아이어린이집"
 	wm.ogp_title = "우리 아이를 위한 세상의 모든 정보"
-	wm.ogp_stitle_name = "우리아이뉴스"
+	wm.ogp_stitle_name = "우리아이어린이집"
 	wm.ogp_description = wm.meta_description	
-	wm.ogp_image = wm.image_domain &"/ikn/ikn_default_ogp.png"
-	'wm.ogp_url = "http://" & wm.site_domain & wm.current_url & "?" & wm.current_query_string
-	wm.ogp_url = "http://" & wm.site_domain & getServerVal( "HTTP_X_ORIGINAL_URL" )
+	wm.ogp_image = wm.site_domain &"/img/ogp/health_ogp.jpg"
+	wm.ogp_url = "http://" & wm.site_domain & wm.current_url & "?" & wm.current_query_string
 
 	wm.getHttpRequest("get") ' http request 값 show (노출) / 비노출 ( anyting )
 	
-	If "121.131.244.42" = wm.user_ip Then 
-	'	echoBr( "http://" & wm.site_domain & getServerVal( "HTTP_X_ORIGINAL_URL" ) )
-	End If 
 	
 	rw.createDisplay() ' 페이지 include 파일 확인 함수 호출
 
-'	Call db_conn.setDbInfo("health", "healthlife", "compadep", "dep2018!@", "211.110.1.52")
-'	Call db_conn.setDbInfo("kids", "kids", "compadep", "dep2018!@", "211.110.1.52")
-'	Call db_conn.setDbInfo("biz", "biz", "compadep", "dep2018!@", "211.110.1.52")
+	Call db_conn.setDbInfo("health", "healthlife", "compadep", "dep2018!@", "211.110.1.52")
+	Call db_conn.setDbInfo("kids", "kids", "compadep", "dep2018!@", "211.110.1.52")
+	Call db_conn.setDbInfo("biz", "biz", "compadep", "dep2018!@", "211.110.1.52")
 
-	Call db_conn.setDb("health", "D:\dbconn\HealthLife.udl")
-	Call db_conn.setDb("kids", "D:\dbconn\KIDS.udl")
-	Call db_conn.setDb("biz", "D:\dbconn\biz.udl")
-	Call db_conn.setDb("Analysis", "D:\dbconn\Analysis.udl")
-	
 	'---------------------------------------------------------------------
 	' router 호출
 	'---------------------------------------------------------------------
 	Call routerHandler()
 	
-	Call userAccessLog()
-
 	'***********************************************
 	' 설명 : 현재 url로 class와 method를 호출한다.
 	'***********************************************
@@ -96,7 +84,7 @@
 
 		permit_call_end_class = "login"
 
-		'echoBr( "HTTP_X_ORIGINAL_URL : " & getServerVal("HTTP_X_ORIGINAL_URL") )
+'		echoBr( "HTTP_X_ORIGINAL_URL : " & getServerVal("HTTP_X_ORIGINAL_URL") )
 
 		If ( InStr( getServerVal("HTTP_X_ORIGINAL_URL"), "/" ) > 0 ) Then 
 			

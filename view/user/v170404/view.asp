@@ -75,8 +75,8 @@
 
 						<div class="area_title_bttn">
 							<ul>
-								<li><a href="mailto:news1@compa.kr"><img src="<%=wm.image_path%>/inc/mail_icon.jpg" alt="메일 보내기" /></a></li>
-								<li><img src="<%=wm.image_path%>/inc/print_icon.jpg" alt="구취" style="cursor:pointer" onclick="popupOpen('/news/viewPrint?ArticleID=<%=ArticleID%>', 'print', 500, '600' )" /></li>
+								<li><a href="mailto:news1@compa.kr"><img src="//park.compa.kr/iknnews/image/mail_icon.jpg" alt="메일 보내기" /></a></li>
+								<li><img src="//park.compa.kr/iknnews/image/print_icon.jpg" alt="구취" style="cursor:pointer" onclick="popupOpen('/news/viewPrint?ArticleID=<%=ArticleID%>', 'print', 500, '600' )" /></li>
 							</ul>
 						</div>
 
@@ -112,7 +112,7 @@
 											<img src="<%=wm.image_domain%>/img/inc/share/22x22/icon_06_on.png" onclick="share_sns('pinterest', '', '<%=wm.ogp_image%>')" style="cursor:pointer" alt="핀터 아이콘" />
 										</li>
 										<!--
-										<li><span><a href="#"><img src="<%=wm.image_path%>/inc/etc_icon.jpg"/></a></span></li>
+										<li><span><a href="#"><img src="//park.compa.kr/iknnews/image/etc_icon.jpg"/></a></span></li>
 										-->
 
 									</ul>
@@ -130,20 +130,14 @@
 								</div>
 								
 								<p class="right">
-									<%
-										If news_source = "1" Then 
-									%>
-									본 기사는 양질의 컨텐츠 제공을 위해 자매지인 헬스앤라이프에서 제공한 기사입니다. <br>
-									<%
-										End If 
-									%>
-									&copy; &nbsp우리아이뉴스의 모든 콘텐츠는 저작권법의 보호를 받습니다. 무단 전재 및 재배포 금지 
-									<br>- 우리아이뉴스는 인터넷신문윤리강령 및 시행세칙을 준수합니다.
+									
+									&#64; &nbsp헬스앤라이프의 모든 콘텐츠는 저작권법의 보호를 받습니다. 무단 전재 및 재배포 금지 
+									<br>- 헬스앤라이프는 인터넷신문윤리강령 및 시행세칙을 준수합니다.
 								</p>
 								
 								<!--
 								<div class="view_bnn_low">
-									<img src="<%=wm.image_path%>/inc/view_bnn1.jpg" width="560"/>
+									<img src="//park.compa.kr/iknnews/image/view_bnn1.jpg" width="560"/>
 								</div>
 								-->
 
@@ -151,7 +145,7 @@
 								<div class="view_bnn_btn">
 									<div class="view_bnn_btn_left">
 										<a href="/news/list?page=<%=page%>&<%=get_value%>">
-											<img src="<%=wm.image_path%>/inc/gotolist_bttn.jpg"/>
+											<img src="//park.compa.kr/iknnews/image/gotolist_bttn.jpg"/>
 										</a>
 									</div>
 									<div class="view_bnn_btn_left">
@@ -197,20 +191,19 @@
 								
 								</div>
 								<div class="view_bnn_low">
+									
 
 									<a href="https://play.google.com/store/apps/details?id=com.compa.healthi" target="_blank">
-										<img src="<%=wm.image_path%>/inc/view_bnn_app.jpg" width="560"/>
+										<img src="//park.compa.kr/iknnews/image/view_bnn_app.jpg" width="560"/>
 									</a>
 
 								</div>
-								<!--
 								<div class="view_bnn_low">
-									<img src="<%=wm.image_path%>/inc/view_likable.jpg" width="560"/>
+									<img src="//park.compa.kr/iknnews/image/view_likable.jpg" width="560"/>
 								</div>
 								<div class="view_bnn_low">
-									<img src="<%=wm.image_path%>/inc/view_comments.jpg" width="560"/>
+									<img src="//park.compa.kr/iknnews/image/view_comments.jpg" width="560"/>
 								</div>
-								-->
 
 							</div>
 						</div>

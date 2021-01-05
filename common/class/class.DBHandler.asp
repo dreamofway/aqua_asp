@@ -54,26 +54,12 @@ Class DBHandler
 			Call db_info.add( arg_db_id, Server.CreateObject("Scripting.Dictionary") )
 		End If 
 		
-		Call db_info.item( arg_db_id ).add( "connect_type", "provider" )
 		Call db_info.item( arg_db_id ).add( "db_name", arg_db_name )
 		Call db_info.item( arg_db_id ).add( "user_id", arg_user_id )
 		Call db_info.item( arg_db_id ).add( "user_pw", arg_user_pw )
 		Call db_info.item( arg_db_id ).add( "db_source", arg_db_source )
 		
 	End Sub ' // setDbInfo
-	
-	Public Sub setDb( ByVal arg_db_id, ByVal path ) 
-
-		arg_db_id = LCase( Trim( arg_db_id ) )
-
-		If db_info.Exists( arg_db_id ) = false Then			
-			Call db_info.add( arg_db_id, Server.CreateObject("Scripting.Dictionary") )
-		End If 
-
-		Call db_info.item( arg_db_id ).add( "connect_type", "udl" )
-		Call db_info.item( arg_db_id ).add( "path", path )
-
-	End Sub ' // setDb
 
 	'-------------------------------------------------------
 	' 데이터 베이스에 접속하고 개체를 반환한다.
@@ -88,16 +74,13 @@ Class DBHandler
 			
 			Dim str_connect
 
-			If db_info.Item( arg_db_id ).Item("connect_type") = "provider" Then 
-				str_connect =	"Provider=SQLOLEDB.1;Persist Security Info=True;Network=Dbmssocn;" &_							
-								"User ID="& db_info.Item( arg_db_id ).Item("user_id") &";" &_
-								"Password="& db_info.Item( arg_db_id ).Item("user_pw") &";" &_
-								"Initial Catalog="& db_info.Item( arg_db_id ).Item("db_name") &";" &_
-								"Data Source="& db_info.Item( arg_db_id ).Item("db_source") &";"
-			Else 
-				str_connect = "File Name=" & db_info.Item( arg_db_id ).Item("path")
-			End If 
-
+			str_connect =	"Provider=SQLOLEDB.1;Persist Security Info=True;Network=Dbmssocn;" &_							
+							"User ID="& db_info.Item( arg_db_id ).Item("user_id") &";" &_
+							"Password="& db_info.Item( arg_db_id ).Item("user_pw") &";" &_
+							"Initial Catalog="& db_info.Item( arg_db_id ).Item("db_name") &";" &_
+							"Data Source="& db_info.Item( arg_db_id ).Item("db_source") &";"
+			
+			
 			Set conn_obj = Server.CreateObject("ADODB.Connection")
 			conn_obj.Open( str_connect )
 			
@@ -229,7 +212,7 @@ Class DBHandler
 
 		Select Case LCase(getSql("proc"))
 			Case "insert" 
-				query = " INSERT INTO "& getSql("use_table") &" ( " & arrToString( getSql("keys"), ",") & " ) VALUES ( "& arrToString( getSql("values"), "," ) &" ) "				
+				query = " INSERT INTO "& getSql("use_table") &" ( " & arrToString( getSql("keys"), ",") & " ) VALUES ( '"& arrToString( getSql("values"), "','" ) &"' ) "				
 			Case "update" 
 				Dim query_data_arr(), loop_cnt, keys, values
 				
@@ -243,7 +226,7 @@ Class DBHandler
 				For loop_cnt = 0 To Ubound( keys )
 					ReDim Preserve query_data_arr( Ubound( query_data_arr ) + 1 )
 
-					query_data_arr( loop_cnt ) = keys( loop_cnt ) & " = " & values( loop_cnt )
+					query_data_arr( loop_cnt ) = keys( loop_cnt ) & " = '" & values( loop_cnt ) & "'"
 
 				Next
 				
@@ -255,7 +238,7 @@ Class DBHandler
 		
 		'echoBr( query )
 		arg_db.Execute( query )
-		db_info.remove( "set_sql" )
+
 	End Sub 
 
 End Class 

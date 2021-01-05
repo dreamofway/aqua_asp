@@ -11,10 +11,6 @@
 					Else 
 						top_menu_selected = ""
 					End If 
-
-					If Not ( wm.getVal( "top_menu" )( top_menu_loop ).item("CatrCode") = "14" ) Then 
-						
-					
 			%>
 			<li>
 				<span <%=top_menu_selected%> >
@@ -24,8 +20,6 @@
 				</span>
 			</li>
 			<%
-					End If 
-
 				Next 
 			%>
 			

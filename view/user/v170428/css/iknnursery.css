@@ -1,0 +1,1758 @@
+
+/* reset */
+* {margin: 0; padding: 0;}
+ol,ul,li {list-style: none;}
+a {outline:0; text-decoration:none; color:inherit;}
+address, i, em {font-style: normal;}
+
+
+
+.wrap{
+	
+	width:100%;
+	background-color: #ececec;
+	overflow:hidden;
+}
+
+
+.header {
+    position: relative;
+    z-index: 10;
+	background-image: url("//img.healthi.kr/ikn/nursery/inc/header_bg.jpg");
+	background-repeat: repeat-x;
+
+}
+
+
+.header_top {
+	position:relative;
+	height: 30px;
+	background:#fff;
+	margin:0 auto;
+    border-bottom: 1px solid #e1e1e1;
+	margin:0;
+	padding:0;
+	display:block;
+}
+
+
+.lnb{
+	position:relative;
+	height: 30px;
+	background:#fff;
+	margin:0 auto;
+	width:1080px;
+	min-width:1080px;
+}
+
+
+.lnb_left{
+    float:left; 
+}
+
+
+.lnb_left li {
+    float: left;
+	margin-right:10px; 
+	font-size:12px;
+	font-weight:100;
+	color:#848383;
+	line-height:30px;
+    letter-spacing:-1px;
+}
+    
+.lnb_left li span {margin-left:10px;}
+
+
+
+.lnb_right{
+    float: right;
+}
+
+
+.lnb_right li {
+    float:right;
+	margin-left:10px; 
+	font-size:12px;
+	font-weight:100;
+	color:#848383;
+	line-height:30px;
+    letter-spacing:-1px;
+}
+    
+.lnb_right li span {
+    margin-left:10px;
+}
+
+
+
+
+
+
+.header_navi{
+    position:relative;
+	height: 89px;
+	margin:0 auto;
+	width:1080px;
+	min-width:1080px;
+}
+
+
+.header_navi nav {
+    position:absolute;
+	left: 230px;
+	top: 22px;
+    float: left;
+
+}
+
+
+
+
+
+.header_navi nav ul li {
+    float: left;
+
+}
+
+
+.header_navi nav p {
+    float:left;
+	font-size:30px;
+	font-weight:400;
+	color:#848383; margin:0 20px;
+	position:absolute;
+	left:91px;
+	top:-2px;
+}
+
+
+
+.header_navi nav ul li span {
+    float:left;
+	font-size:25px;
+	font-weight:500;
+	color:#848383; margin:0 10px;
+	vertical-align:bottom;
+	letter-spacing:-1.5px;
+}
+
+
+
+
+.header_navi nav ul li .active {
+    float:left;
+	font-size:25px;
+	font-weight:600;
+	color:#d0689a; margin:0 10px;
+	vertical-align:bottom;
+	letter-spacing:-1.5px;
+}
+
+
+
+
+/*.header_navi nav ul li:hover span {
+    
+    font-weight: 900;
+
+    color: #0365b0;
+    
+}*/
+
+
+
+
+.searchingbox {
+    position: absolute;
+    top: 35px;
+    z-index: 80;
+    right: 0px;
+	border: 2px solid #ec64a5;
+    width: 245px;
+    height: 30px;
+    font-size: 12px;
+    background-color: #fff;
+    letter-spacing:-1px;
+	color:#0a9fe0;
+	padding-left:15px;
+}
+
+
+.searchingbox:focus {
+	outline: none;
+}
+
+
+
+.searching_btn {
+    position: absolute;
+    top: 37px;
+    right: 1px;
+    z-index: 90;
+}
+
+
+.sub_navi{
+    height:30px;
+	width:100%
+    z-index: 10;
+    background-color:#fff;
+	box-shadow:0 5px 11px 0 rgba(0,0,0,0.08), 0 4px 15px 0 rgba(0,0,0,0.08)
+}
+
+
+
+.sub_navi nav  { 
+	margin:0 auto;
+    width:1080px;
+	padding-left:8px;
+}
+
+
+
+
+
+.sub_navi nav ul {
+    float:left;
+	font-size:14px;
+	font-weight:600;
+	letter-spacing:-1px;
+	color:#848383; margin:0 20px;
+	padding-top:5px;
+	letter-spacing:-1px;
+}
+
+
+
+.sub_navi nav ul li{
+    float: left;
+}
+
+.sub_navi nav ul li span{
+    margin-right:30px;
+}
+
+
+.sub_navi nav ul li span:hover {    
+    font-weight: 900;
+    color: #d0689a;  
+    border-bottom:2px solid #d0689a;
+	padding-bottom:3px;
+}
+
+
+
+.sub_navi nav ul li span.on {    
+    font-weight: 900;
+    color: #d0689a;  
+    border-bottom:2px solid #d0689a;
+	padding-bottom:3px;
+}
+
+
+
+
+
+
+
+/*헤더 끝*/
+
+
+
+
+
+
+
+.container {
+    position: relative;
+    width: 1080px;
+    margin: 0 auto;
+    margin-top: 10px;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
+
+.mainbg_box {
+   width: 1080px;
+   height:267px;
+   position:relative;
+   background-color:#fff;
+   box-shadow:0 5px 11px 0 rgba(0,0,0,0.08), 0 4px 15px 0 rgba(0,0,0,0.08)
+  }
+    
+.main_btns {
+    width: 1080px;
+    float: left;
+	position:absolute;
+	bottom:0px;
+}
+
+
+.main_btns ul li{
+    overflow:hidden;
+}
+
+
+.main_btns ul li{
+    float: left;
+	top:350px;
+}
+
+.main_btns ul li a{
+	width:270px;
+	height:80px;
+	display:block;
+}
+
+
+
+.main_bnn_box {
+    margin-top: 10px;
+    position:relative;
+    background-color:#fff;
+    box-shadow:0 5px 11px 0 rgba(0,0,0,0.08), 0 4px 15px 0 rgba(0,0,0,0.08);
+    border:1px solid #e1e1e1;
+   	display:block;
+    height: 53px;
+}
+
+
+.area_center{
+    position:relative;
+    float:left;
+	width: 740px;
+}
+
+.nursery_searching_box {
+    clear:both;
+	position:relative;
+    float:left;
+    width: 738px;
+	margin: 0 auto;
+    margin-top: 10px;
+	height: 55px;
+    background-color:#fff;
+	border:1px solid #e1e1e1;
+   	display:block;
+    box-shadow:0 5px 11px 0 rgba(0,0,0,0.08), 0 4px 15px 0 rgba(0,0,0,0.08);
+	margin-bottom:10px;
+}
+
+
+
+.searching_box_title {
+    float:left;
+    color: #959085;
+	font-size: 18px;
+    padding-left:17px;
+	padding-top:15px;
+	font-weight: bold;
+}
+
+
+
+
+
+
+select {
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+	background: url("//img.healthi.kr/ikn/nursery/inc/arrow_below.jpg") no-repeat 95% 50%; /* 화살표 모양의 이미지 */ 
+}
+
+/* IE 10, 11의 네이티브 화살표 숨기기 */ 
+select::-ms-expand {
+    display: none; 
+}
+
+
+
+select { 
+    margin-top: 14px;
+    margin-left: 20px;
+	padding-left:10px;
+	width: 120px; /* 원하는 너비설정 */
+	height: 30px;
+	/*padding: .8em .5em;  여백으로 높이 설정 */
+	font-family: inherit; /* 폰트 상속 */
+	background: url("//img.healthi.kr/ikn/nursery/inc/arrow_below.jpg") no-repeat 88px center; /* 네이티브 화살표 대체 */
+	border: 1px solid #e1e1e1;
+	border-radius: 0px; /* iOS 둥근모서리 제거 */
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+	float:left;
+}
+
+
+.searching_group{
+    position:relative;
+	float:left;
+}
+
+
+.nurserysearchingbox{
+
+    position: relative;
+	float:left;
+    z-index: 80;
+    border: 1px solid #e1e1e1;
+    width: 300px;
+    height: 30px;
+    font-size: 12px;
+    background-color: #fff;
+    letter-spacing: -1px;
+    color: #848383;
+    margin-left: 15px;
+    margin-top: 14px;
+	padding-left: 15px;
+	box-sizing:border-box;
+
+}
+
+
+.nurserysearching_btn{
+    position: absolute;
+	top:14px;
+	right:0;
+    z-index: 90;
+}
+
+
+
+
+.menu_bar{
+    position:relative;
+    float:left;
+    width: 738px;
+	background-color:#fff;
+	height:44px;
+	border: 1px solid #e1e1e1;
+}
+
+
+.menu_bar img{
+    float:left;
+	border: 0px solid #e1e1e1;
+
+}
+
+.menu_bar img.right{
+    float:left;
+	border-left: 1px solid #e1e1e1;
+
+}
+
+
+
+.menu_navi{
+    position: relative;
+    float: left;
+    width: 602px;
+    height: 44px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 45px;
+	border-left: 1px solid #e1e1e1;
+	border-right: 1px solid #e1e1e1;
+}
+
+
+.menu_navi nav ul {
+    float:left;
+	font-size:14px;
+	font-weight:600;
+	letter-spacing:-1px;
+	color:#848383;
+	letter-spacing:-1px;
+}
+
+
+.menu_navi nav ul li {
+    float: left;
+}
+
+.menu_navi nav ul li:focus {
+    outline: none;
+}
+
+
+
+
+.menu_navi nav ul li span {
+    float:left;
+    font-size:14px;
+	padding-left:20px;
+	color:#848383;
+}
+
+
+.menu_navi nav ul li span:hover {    
+    font-weight: bold;
+    color: #ff7f84;  
+    /*border-bottom:2px solid #0365b0;
+	padding-bottom:3px;*/
+}
+
+
+.menu_navi nav ul li span.on {    
+    font-weight: bold;
+    color: #ff7f84;  
+   /* border-bottom:2px solid #0365b0;
+	padding-bottom:3px;*/
+}
+
+
+
+
+.x_btn{
+    position:absolute;
+	top:79px;
+	left:1px;
+	z-index:1;
+}
+
+.all_administr {
+    position:absolute;
+	top:125px;
+	overflow:hidden;
+	border:1px solid #e1e1e1;
+	background-color:#fff;
+	border-top: 0px;
+	z-index:10;
+	padding-bottom:15px;
+}
+
+
+
+.all_administr ul a {
+    color:#bcbcbc;
+    width:127px;
+	height:50px;
+	border:1px solid #bcbcbc;
+	float:left;
+	font-size:12px;
+    font-weight:bold;
+	text-align:center;
+	line-height:50px;
+	margin-left:15px;
+	margin-top:15px;
+}
+
+
+
+.all_administr ul a.su:hover {    
+    color: #ff7f84;  
+    border:1px solid #ff7f84;
+
+}
+
+
+
+
+.all_administr ul a.bs:hover {    
+    color: #4962a1;  
+    border:1px solid #4962a1;
+}
+
+.all_administr ul a.dg:hover {    
+    color: #a787b0;  
+    border:1px solid #a787b0;
+}
+
+.all_administr ul a.ic:hover {    
+    color: #80ad80;  
+    border:1px solid #80ad80;
+}
+
+
+
+.all_administr ul a.gj:hover {    
+    color: #93964d;  
+    border:1px solid #93964d;
+}
+
+
+
+.all_administr ul a.dj:hover {    
+    color: #83d498;  
+    border:1px solid #83d498;
+}
+
+
+
+.all_administr ul a.us:hover {    
+    color: #9e1c8d;  
+    border:1px solid #9e1c8d;
+}
+
+
+
+.all_administr ul a.sj:hover {    
+    color: #8b6682;  
+    border:1px solid #8b6682;
+}
+
+
+
+.all_administr ul a.gg:hover {    
+    color: #2b3b61;  
+    border:1px solid #2b3b61;
+}
+
+
+
+.all_administr ul a.gw:hover {    
+    color: #b061a2;  
+    border:1px solid #b061a2;
+}
+
+
+
+.all_administr ul a.cb:hover {    
+    color: #833639;  
+    border:1px solid #833639;
+}
+
+
+.all_administr ul a.cn:hover {    
+    color: #3e8e80;  
+    border:1px solid #3e8e80;
+}
+
+
+
+.all_administr ul a.jb:hover {    
+    color: #6dc5b8;  
+    border:1px solid #6dc5b8;
+}
+
+
+
+
+.all_administr ul a.jn:hover {    
+    color: #7a4bc8;  
+    border:1px solid #7a4bc8;
+}
+
+
+
+.all_administr ul a.gb:hover {    
+    color: #4585c1;  
+    border:1px solid #4585c1;
+}
+
+
+.all_administr ul a.gn:hover {    
+    color: #2d6937;  
+    border:1px solid #2d6937;
+}
+
+
+.all_administr ul a.jj:hover {    
+    color: #7171e6;  
+    border:1px solid #7171e6;
+}
+
+
+.main_nurseryschool_box{
+    position:relative;
+    float:left;
+    width: 738px;
+	background-color:#fff;
+    box-shadow:0 5px 11px 0 rgba(0,0,0,0.08), 0 4px 15px 0 rgba(0,0,0,0.08);
+	border: 1px solid #e1e1e1;
+	border-top: 0px solid #e1e1e1;
+
+}
+
+
+
+.main_thumb{
+    width:166px;
+    height:150px;
+    position:relative;
+    margin-top:15px;
+    padding-left:15px;
+	float:left;
+    font-size:16px;
+	color:#fff;
+	font-weight:bold;
+}
+
+
+
+
+.main_thumb_today{
+    position:absolute;
+	top:0;
+    font-size:12px;
+	color:#fff;
+	border-top: 3px solid #fff;
+	padding-top:10px;
+	margin-top:20px;
+	margin-left:15px;
+}
+
+
+
+
+.administr{
+    font-size:16px;
+	color:#fff;
+	font-weight:bold;
+    position:absolute;
+	top:0;
+	z-index:100;
+	margin-top:70px;
+	margin-left:15px;
+}
+
+
+
+.main_nursery{
+    position:relative;
+    margin-top:15px;
+    padding-left:15px;
+	float:left;
+    font-size:16px;
+	color:#fff;
+	font-weight:bold;
+	box-sizing:border-box;
+	height:150px;
+}
+
+
+
+
+.main_thumb_title{
+    position:absolute;
+	background-color:#000;
+	opacity: 0.5;
+	bottom:0;
+	width: 345px;
+	height:35px;
+}
+
+
+.main_thumb_title{
+    position:absolute;
+	background-color:#000;
+	opacity: 0.5;
+	bottom:0;
+	width: 345px;
+	height:35px;
+}
+
+
+.main_adress{
+    float:right;
+    color:#fff;
+	font-size:12px;
+	font-weight:bold;
+	padding-top:10px;
+	padding-right:10px;
+	position:relative;
+}
+
+.main_name{
+    float:right;
+	padding-right:20px;
+	padding-top:5px;
+    color:#fff;
+	font-size:16px;
+	font-weight:bold;
+	position:relative;
+}
+
+
+.main_corner{
+    margin-top:15px;
+    margin-left:15px;
+	padding-top:20px;
+	padding-left:10px;
+
+    position:relative;
+    float:left;
+    background-color:#f7f3ee;
+	width: 166px;
+	height: 150px;
+	box-sizing:border-box;
+}
+
+
+
+
+
+.main_corner img{
+    position:relative;
+    float:left;
+	padding-left:5px;
+}
+
+
+
+.corner_plus{
+    float:left;
+	font-size:12px;
+	color: #bcbcbc;
+    font-weight: bold;
+}
+
+
+
+.corner_title{
+    padding-left:10px;
+	padding-top:10px;
+    clear:both;
+    float:left;
+	font-size:16px;
+	color: #848383;
+    font-weight: bold;
+}
+
+
+.corner_titlelist{
+	margin-top:10px;
+	float:left;
+	clear:both;
+	overflow:hidden;
+}
+
+
+.corner_titlelist ul li {
+    width:140px;
+	height:18px;
+	line-height:20px;
+	font-weight:bold;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	margin:5px 0;
+	padding-bottom:5px;
+	font-size:12px;
+	color:#343434;
+	font-weight:bold;
+    white-space: nowrap;
+
+}
+
+.corner_titlelist ul li img{
+	margin-right:3px;
+}
+    
+
+
+.nurseries_below {
+	margin:15px 0 0 0px;
+	float:left;
+	position:relative;
+}
+
+.nursery_name-red {
+    font-size: 14px;
+	color:#e16e74;
+	font-weight:bold;
+	width: 165px;
+	height:55px;
+	border: 1px solid #f5e2e3;
+	border-radius: 10px;
+	box-sizing:border-box;
+	text-align:center;
+	line-height: 50px;
+	float:left;
+	margin-left:15px;
+	margin-bottom:15px;
+}
+
+
+.nursery_name-blue {
+    font-size: 14px;
+	color:#4d97bc;
+	font-weight:bold;
+	width: 165px;
+	height:55px;
+	border: 1px solid #d2d6d8;
+	border-radius: 10px;
+	box-sizing:border-box;
+	text-align:center;
+	line-height: 50px;
+	float:left;
+	margin-left:15px;
+	margin-bottom:15px;
+}
+
+
+
+.nursery_name-lightviolet {
+    font-size: 14px;
+	color:#9f94c6;
+	font-weight:bold;
+	width: 165px;
+	height:55px;
+	border: 1px solid #d3d1da;
+	border-radius: 10px;
+	box-sizing:border-box;
+	text-align:center;
+	line-height: 50px;
+	float:left;
+	margin-left:15px;
+	margin-bottom:15px;
+}
+
+
+
+.nursery_name-dullviolet {
+    font-size: 14px;
+	color:#a56ba5;
+	font-weight:bold;
+	width: 165px;
+	height:55px;
+	border: 1px solid #f3ebf3;
+	border-radius: 10px;
+	box-sizing:border-box;
+	text-align:center;
+	line-height: 50px;
+	float:left;
+	margin-left:15px;
+	margin-bottom:15px;
+}
+
+
+
+.nursery_name-green {
+    font-size: 14px;
+	color:#71b18e;
+	font-weight:bold;
+	width: 165px;
+	height:55px;
+	border: 1px solid #dee9e3;
+	border-radius: 10px;
+	box-sizing:border-box;
+	text-align:center;
+	line-height: 50px;
+	float:left;
+	margin-left:15px;
+	margin-bottom:15px;
+}
+
+
+
+.nursery_name-yellow {
+    font-size: 14px;
+	color:#bfa94f;
+	font-weight:bold;
+	width: 165px;
+	height:55px;
+	border: 1px solid #e7e3d3;
+	border-radius: 10px;
+	box-sizing:border-box;
+	text-align:center;
+	line-height: 50px;
+	float:left;
+	margin-left:15px;
+	margin-bottom:15px;
+}
+
+
+
+.nursery_name-deepgreen {
+    font-size: 14px;
+	color:#617848;
+	font-weight:bold;
+	width: 165px;
+	height:55px;
+	border: 1px solid #dee9e3;
+	border-radius: 10px;
+	box-sizing:border-box;
+	text-align:center;
+	line-height: 50px;
+	float:left;
+	margin-left:15px;
+	margin-bottom:15px;
+}
+
+
+
+.nursery_name-navi {
+    font-size: 14px;
+	color:#5473a4;
+	font-weight:bold;
+	width: 165px;
+	height:55px;
+	border: 1px solid #dce4f1;
+	border-radius: 10px;
+	box-sizing:border-box;
+	text-align:center;
+	line-height: 50px;
+	float:left;
+	margin-left:15px;
+	margin-bottom:15px;
+}
+
+
+
+.area_right {
+    width:330px;
+    position:relative;
+	float:right;
+}
+
+
+.icon_box {
+    width:328px;
+    margin-top:10px;
+    box-shadow:0 5px 11px 0 rgba(0,0,0,0.08), 0 4px 15px 0 rgba(0,0,0,0.08);
+    background-color:#fff;
+    border:1px solid #f5d8d8;
+	overflow:hidden;
+}
+
+
+.icon_box a {
+    width:82px;
+	height:82px;
+    display:block;
+}
+
+.icon_box_first {
+    float:left;
+	position:relative;
+    width:328px;
+	height:82px;
+    border-bottom: 1px solid #f5d8d8;
+}
+.icon_box_second {
+    float:left;
+	position:relative;
+    width:328px;
+	height:82px;
+}
+
+/*
+.icon_box p {
+    position: absolute;
+    top: 48px;
+    width:82px;
+    text-align: center;
+    font-size: 10px;
+	color:#a18b8b;
+    letter-spacing:-1.5;
+	height:12px;
+	line-height:14px;
+}
+
+
+.icon_box p.oneline{
+    top: 53px;
+    letter-spacing:-1.5;
+}
+*/
+
+
+
+.icon_box ul li{
+    float:left;
+    width:82px;
+	height:82px;
+	position:relative;
+}
+
+
+
+.icon_box ul li img{
+    float:left;
+    width:82px;
+	height:82px;
+	position:relative;
+    border-left: 1px solid #f5d8d8;
+}
+
+
+.icon_box ul li img.first{
+    float:left;
+    width:82px;
+	height:82px;
+	position:relative;
+    border: 0px solid #f5d8d8;
+}
+
+
+
+
+.right_bnn_box {
+    float:left;
+    margin-top: 10px;
+	margin-bottom: 10px;
+    position:relative;
+    background-color:#fff;
+    box-shadow:0 5px 11px 0 rgba(0,0,0,0.08), 0 4px 15px 0 rgba(0,0,0,0.08);
+    border:1px solid #e1e1e1;
+   	display:block;
+	height:148px;
+}
+
+.right_contents_box{
+    float:left;
+    width:328px;
+    box-shadow:0 5px 11px 0 rgba(0,0,0,0.08), 0 4px 15px 0 rgba(0,0,0,0.08);
+    background-color:#fff;
+    border:1px solid #e1e1e1;
+
+}
+
+.right_contents_title_area {
+    padding-top:30px;
+	padding-left:30px;
+
+}
+.contents_title {
+    font-size: 18px;
+	font-weight: bold;
+	color:#959085;
+	width: 150px;
+	float:left;
+	height:20px;
+	line-height:20px;
+
+}
+
+.contents_plus{
+    float:right;
+    font-size: 12px;
+	font-weight: bold;
+	color:#bcbcbc;
+	padding-right:20px;
+	padding-top: 3px;
+	letter-spacing:-1.5;
+}
+
+.contents_area{
+    padding-top:10px;
+	padding-bottom: 27px;
+    float:left;
+}
+
+
+.contents_area ul li span{
+    width: 270px;
+    float:left;
+	padding-left:30px;
+	padding-top:10px;
+	font-size: 14px;
+	font-weight:bold;
+	color:#848383;
+	overflow:hidden;
+	height:20px;
+	line-height:25px;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/*
+.district_box {
+	position:relative;
+    float:left;
+    width: 120px;
+	height: 30px;
+	border:1px solid #e1e1e1;
+   	display:block;
+	margin-top: 12px;
+	margin-left: 20px;
+	color: #848383;
+}
+*/
+
+
+
+
+/*리스트 시작*/
+
+
+
+.list_area_center_box{
+    overflow:hidden;
+	float:left;
+	position:relative;
+	width: 750px;
+	
+
+}
+
+
+
+.list_path_box{
+    width: 736px;
+    box-shadow:0 5px 11px 0 rgba(0,0,0,0.08), 0 4px 15px 0 rgba(0,0,0,0.08);
+    background-color:#fff;
+    border:1px solid #e1e1e1;
+	overflow:hidden;
+	float:left;
+	position:relative;
+}
+
+
+.path_contents {
+    height: 50px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+
+
+.path_contents ul li span{
+	float:left;
+	font-size:14px;
+	color:#848383;
+	padding-left:10px;
+	padding-top:4px;
+}
+
+
+.path_contents ul li span.list_selected{
+	float:left;
+	font-size:18px;
+	color:#c03778;
+	font-weight:bold;
+	padding-left:12px;
+	margin-top:-3px;
+}
+
+
+.list_path_box ul li img{
+    float:left;
+	padding-left:10px;
+	padding-top:7px;
+}
+    
+
+
+
+
+
+.nursery_list_box{
+    margin-top:10px;
+    position:relative;
+    width: 738px;
+    box-shadow:0 5px 11px 0 rgba(0,0,0,0.08), 0 4px 15px 0 rgba(0,0,0,0.08);
+    background-color:#fff;
+    border:1px solid #e1e1e1;
+	overflow:hidden;
+	float:left;
+    padding:40px 30px;
+	box-sizing:border-box;
+}
+
+
+
+.nursery_list_title{
+
+    font-size:30px;
+	font-weight:normal;
+	color:#434343;
+	text-align:center;
+}
+
+
+
+
+.nursery_list_title_address{
+
+    font-size:30px;
+	font-weight:normal;
+	color:#434343;
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:40px;
+}
+
+
+
+
+.list_searching_area{
+    margin:0 auto;
+	width: 170px;
+	height: 32px;
+	box-sizing:border-box;
+    overflow:hidden;
+    position: relative;
+}
+
+input.nursery_list_searching_box{
+
+    position: relative;
+    z-index: 80;
+    border: 1px solid #e1e1e1;
+	border-radius: 16px;
+    width: 170px;
+    height: 32px;
+    font-size: 12px;
+    background-color: #fff;
+    letter-spacing: -1px;
+    color: #848383;
+	box-sizing:border-box;
+	margin:0 auto;
+    padding-left:10px;
+}
+
+
+.nurserylistsearching_btn{
+    position:absolute;
+	top:0px;
+	right:0px;
+    z-index: 90;
+	width:30px;
+	height:30px;
+	border-radius:15px;
+	border: 1px solid #e1e1e1;
+	background-color: #fff;
+    letter-spacing: -1px;
+    color: #848383;
+}
+
+
+
+
+.basic_list_area{
+    margin-top: 20px;
+}
+
+.list_first{
+    border-top: 1px solid #848383;
+    height:50px;
+	line-height:50px;
+	overflow:hidden;
+}
+.list_nth{
+    border-top: 1px solid #e1e1e1;
+    height:50px;
+	line-height:50px;
+	overflow:hidden;
+}
+
+.list_last{
+    border-top: 1px solid #e1e1e1;
+	border-bottom: 1px solid #444343;
+    height:50px;
+	line-height:50px;
+	overflow:hidden;
+}
+
+
+    
+.list_no{
+    width:70px;
+    color:#848383;
+	font-size:12px;
+	float:left;
+	position:relative;
+}
+
+.list_title{
+    width:345px;
+	float:left;
+	position:relative;
+}
+
+
+.list_title_title{
+    color:#444343;
+	font-size:12px;
+	float:left;
+	position:relative;
+}
+
+
+
+.list_title_title:hover{
+
+    color:#444343;
+	font-size:12px;
+	font-weight:bold;
+	float:left;
+	position:relative;
+	text-decoration:underline;
+
+}
+
+
+
+.list_writer{
+    width:110px;
+    color:#848383;
+	font-size:12px;
+	float:left;
+	position:relative;
+}
+
+.list_date{
+    width:100px;
+    color:#848383;
+	font-size:12px;
+	float:left;
+	position:relative;
+}
+
+.list_viewcount{
+    width:50px;
+    color:#848383;
+	font-size:12px;
+	float:left;
+	position:relative;
+    text-align:right;
+}
+
+
+
+
+
+
+
+
+.page-box {
+    float: left;
+    padding-top: 30px;
+    width: 700px;
+    overflow: hidden;
+    text-align: center;
+	box-sizing:border-box;
+	border-top:1px solid #848383
+}
+
+
+
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+
+ul.pagination li {
+    color: #bcbcbc;
+    float: left;
+    padding: 5px 10px;
+    text-decoration: none;
+    transition: background-color .3s;
+    display: inline;
+}
+
+
+ul.pagination li.active {
+    color: #848383;
+	font-weight:bold;
+    float: left;
+    padding: 5px 10px;
+    text-decoration: none;
+    transition: background-color .3s;
+    display: inline;
+}
+
+
+ul.pagination li:hover {
+    color: #848383;
+	font-weight:bold;
+    float: left;
+    padding: 5px 10px;
+    text-decoration: none;
+    transition: background-color .3s;
+    display: inline;
+}
+
+
+/*리스트 페이지 끝*/
+
+
+
+
+
+
+
+
+/*뷰페이지 시작*/
+
+
+
+.nursery_view_title{
+    font-size:24px;
+	color:#343434;
+	text-align:center;
+	border-bottom:1px solid #848383; 
+	overflow:hidden;
+	padding-top:10px;
+    
+}
+
+
+
+
+.date_writer_viewcount{
+	position:relative;
+    margin: 20px auto;
+	font-size:12px;
+	color:#bcbcbc;
+    overflow:hidden;
+}
+
+
+span.view_date{
+
+	text-align:center;
+    position:relative;
+}
+
+span.view_writer{
+
+	text-align:center;
+    position:relative;
+	padding-left:30px;
+}
+
+
+span.view_count{
+
+	text-align:center;
+    position:relative;
+	padding-left:30px;
+}
+
+.nursery_view_contents{
+
+    color:#444343;
+	font-size:13px;
+	line-height:2.5;
+	padding-top:40px;
+	padding-bottom:70px;
+	border-bottom:1px solid #848383;
+
+}
+
+
+.view_gtlist_btn{
+    float:left;
+	position:relative;
+	overflow:hidden;
+	padding-top:25px;
+}
+
+
+
+
+/*뷰페이지 끝*/
+
+
+
+
+
+
+
+/*어린이집리스트시작*/
+
+
+
+
+.nurseryschool_list_area{
+
+}
+
+
+.nurseryschool_list_first{
+    padding-top:20px;
+	border-top:1px solid #848383;
+	overflow:hidden;
+}
+
+.nurseryschool_list_thumb{
+    float:left;
+	padding-bottom:15px;
+
+}
+
+.nurseryschool_name{
+    font-size:18px;
+	font-weight:bold;
+	margin-top:-5px;
+	padding-left:10px;
+	padding-bottom:15px;
+	float:left;
+	position:relative;
+}
+
+.nurseryschool_info{
+    float:left;
+	position:relative;
+    padding: 4px 10px;
+	width:450px;
+
+}
+
+.info_icon{
+    float:left;
+	position:relative;
+}
+
+.info_contents{
+    float:left;
+	position:relative;
+    font-size:14px;
+	font-weight:normal;
+	color:#343434;
+	padding-left:5px;
+}
+
+
+
+.nurseryschool_list_nth{
+    padding-top:20px;
+	border-top:1px solid #e1e1e1;
+	overflow:hidden;
+}
+
+
+
+
+
+.nurseryschool_list_last{
+    padding-top:20px;
+	border-top:1px solid #e1e1e1;
+	border-bottom:1px solid #848383;
+	overflow:hidden;
+}
+
+
+/*리스트 끝*/
+
+
+
+/*어린이집 뷰 시작*/
+
+
+
+.nurschool_view_title{
+    font-size:24px;
+	color:#343434;
+	text-align:center;
+	overflow:hidden;
+	padding-top:10px;
+	padding-bottom:5px;
+    
+}
+
+table{
+    border-collapse:collapse;
+	margin-top:40px;
+
+}
+
+
+table tr td.tdcontents{
+	color:#444343;
+	font-size:12px;
+	padding-left:20px;
+}
+
+
+
+table tr td.classifying{
+	color:#444343;
+	font-size:14px;
+	font-weight:bold;
+    text-align:center;
+}
+
+
+
+table tr td.classifying_empty{
+	color:#bcbcbc;
+	font-size:14px;
+	font-weight:bold;
+    text-align:center;
+}
+
+
+
+
+/*푸터 시작*/
+
+
+footer {
+    overflow: hidden;
+    width: 1080px;
+    margin: 0 auto 30px;
+    height: 140px;
+    background-color: #f9f9f9;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.08), 0 4px 15px 0 rgba(0,0,0,0.08);
+}
+
+.logo{
+    float:left;
+    overflow:hidden;
+    padding-top:55px;
+	padding-left:35px;
+}
+
+
+.footermenu {
+
+    padding-top:30px;
+	float:left
+
+}
+
+.footermenu span{
+
+    font-size:10px;
+	color:#434343;
+	float:left;
+
+
+}
+
+.footermenu ul li{
+	padding-left:25px;
+	float:left;
+
+}
+
+
+
+
+.footerinfo {
+
+    padding-top:15px;
+	float:left
+
+}
+
+.footerinfo span{
+
+    font-size:11px;
+	color:#434343;
+
+}
+
+.footerinfo ul li{
+    font-size:11px;
+	padding-left:25px;
+	float:left;
+
+}
+
+
+.copy {
+    float:left;
+    padding-top:15px;
+	padding-left:25px;
+    font-size:11px;
+	color:#434343;
+}
+
+
+
+
+
+/*푸터 끝*/

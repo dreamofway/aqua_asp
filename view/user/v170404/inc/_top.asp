@@ -20,15 +20,13 @@
 
 <div class="header_navi">
 	
-	<img src="<%=wm.image_path%>/inc/logo_header_smaller.jpg" title="우리아이" style="position:absolute; left:0px; top:0px; z-index:30; clear:left;"/>
+	<img src="//park.compa.kr/iknnews/image/logo_header_smaller.jpg" title="우리아이" style="position:absolute; left:0px; top:0px; z-index:30; clear:left;"/>
 
 	<nav>
 		<ul>
 			<li><a href="/"><span class="active">뉴스</span></a></li>
-			<!--
-			<li><a href="http://child.ikn.kr"  title="우리어린이집으로 이동" ><span>어린이집</span></a></li>
+			<li><a href="http://child.ikn.kr" target="_blank" title="우리어린이집 새창으로 열기" ><span>어린이집</span></a></li>
 			<p>l</p>
-			-->
 
 		</ul>
 	</nav>
@@ -37,6 +35,6 @@
 		<input class="searchingbox" type="text" name="search_keyword" id="global_seach_input" value="<%=wm.getParam( "search_keyword" )%>" title="검색어 입력" maxlength="180" placeholder=" 뉴스 검색">
 	</form>
 	<div class="searching_btn">
-	   <input type="image" src="<%=wm.image_path%>/inc/searchingicon.jpg" alt="검색" style="cursor:pointer" onclick="topSeachCheck('click');">
+	   <input type="image" src="//park.compa.kr/iknnews/image/searchingicon.jpg" alt="검색" style="cursor:pointer" onclick="topSeachCheck('click');">
 	</div>
 </div>

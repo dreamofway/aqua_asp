@@ -30,15 +30,6 @@
 		<link rel="stylesheet" href="<%=wm.user_view_path%>/js/jquery-ui/jquery-ui.structure.min.css" />
 		<link rel="stylesheet" href="<%=wm.user_view_path%>/js/jquery-ui/jquery-ui.theme.min.css" />
 
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112304857-1"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'UA-112304857-1');
-		</script>
-
 		<script type="text/javascript" src="<%=wm.user_view_path%>/js/jquery-1.11.2.min.js"></script>
 		<script type="text/javascript" src="<%=wm.user_view_path%>/js/jquery-ui/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="<%=wm.user_view_path%>/js/jquery.blockUI.js"></script>
@@ -48,51 +39,7 @@
 		<script type="text/javascript" src="<%=wm.user_view_path%>/js/template/jquery.tmpl.min.js"></script>
 		<script type="text/javascript" src="<%=wm.user_view_path%>/js/template/jquery.tmplPlus.min.js"></script>
 		<script type="text/javascript" src="<%=wm.user_view_path%>/js/printElement/jquery.printElement.js"></script>
-
-		<script type="text/javascript" src="<%=wm.user_view_path%>/js/bxslider/jquery.bxslider.min.js"></script>
 		
-
-		<style type="text/css">
-			.bx-pager {
-			  text-align: center;
-			  font-size: .85em;
-			  font-family: Arial;
-			  font-weight: bold;
-			  color: #666;
-			  padding-top: 20px;
-			}
-
-			.bx-pager.bx-default-pager a {
-			  background: #666;
-			  text-indent: -9999px;
-			  display: block;
-			  width: 10px;
-			  height: 10px;
-			  margin: 0 5px;
-			  outline: 0;
-			  -moz-border-radius: 5px;
-			  -webkit-border-radius: 5px;
-			  border-radius: 5px;
-			}
-			.bx-pager.bx-default-pager a:hover,
-			.bx-pager.bx-default-pager a.active,
-			.bx-pager.bx-default-pager a:focus {
-			  background: #000;
-			}
-
-			.bx-pager-item,
-			.bx-controls-auto .bx-controls-auto-item {
-			  display: inline-block;
-			  vertical-align: bottom;
-			  *zoom: 1;
-			  *display: inline;
-			}
-			.bx-pager-item {
-			  font-size: 0;
-			  line-height: 0;
-			}
-
-		</style>
 		<script type="text/javascript">
 		<!--
 			function topSeachCheck( type ) {

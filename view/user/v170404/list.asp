@@ -30,7 +30,7 @@
 											<div class="newslist_title">
 												<div class="newslist_title_path">
 													<%=wm.getVal( "top_menu_title" )%> 
-													<img src="<%=wm.image_path%>/inc/right_icon.jpg" title="우리아이"/>
+													<img src="//park.compa.kr/iknnews/image/right_icon.jpg" title="우리아이"/>
 													<span><%=wm.getVal( "sub_menu_title" )%></span>
 												</div>
 												
@@ -63,8 +63,7 @@
 														RegDate = news_row( list_loop ).item("RegDate")
 														article_relation_cnt = news_row( list_loop ).item("article_relation_cnt")
 														conv_reg_date = dateType( "T09", news_row( list_loop ).item("conv_reg_date") ) 
-														'conv_mod_date = dateType( "T09", news_row( list_loop ).item("conv_mod_date") ) 
-														conv_mod_date = dateType( "T09", news_row( list_loop ).item("conv_reg_date") ) 
+														conv_mod_date = dateType( "T09", news_row( list_loop ).item("conv_mod_date") ) 
 
 														If conv_mod_date = "" Then 
 															conv_mod_date = conv_reg_date
