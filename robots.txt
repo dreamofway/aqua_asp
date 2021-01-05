@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /common/
+Disallow: /controller/
+Disallow: /lib/
+Disallow: /view/
+
+Crawl-delay: 86400
+
+User-agent: Yahoo! Slurp
+Disallow: /
